@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="gmail">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/APIs/gmail" />
+      <root url="file://$PROJECT_DIR$/APIs/gmail" />
+      <root url="file://$PROJECT_DIR$/APIs/gmail/libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/APIs/gmail" />
+      <root url="file://$PROJECT_DIR$/APIs/gmail" />
+      <root url="file://$PROJECT_DIR$/APIs/gmail/libs" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail/libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail/libs" recursive="false" type="SOURCES" />
+  </library>
+</component>
