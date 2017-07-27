@@ -1,0 +1,36 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.TextFlow?>
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Text text="Choose a Gmail account"
+          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnSpan="2"/>
+
+    <ComboBox fx:id="accountDropdown"
+              GridPane.columnIndex="0" GridPane.rowIndex="1"
+              />
+    <TextFlow fx:id="newAccountTextLink" onMouseClicked="#makeNewAccount"
+              GridPane.columnIndex="0" GridPane.rowIndex="2"
+              />
+
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="Login"
+                onAction="#handleLogin"/>
+    </HBox>
+
+</GridPane>
+
+
