@@ -5,7 +5,7 @@ public class User implements Serializable{
     private String emailAddress;
     private String userID;
 
- public User(String emailAddress, String userID) {
+ public User(String userID, String emailAddress) {
      this.emailAddress = emailAddress;
      this.userID = userID;
  }

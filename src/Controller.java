@@ -1,6 +1,7 @@
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-
+import com.google.api.services.gmail.model.Profile;
 import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Controller {
     Authorizer mainAuthorizer;
     User currentUser;
     Boolean newAccountThreadRunning;
-    private final String USER_FILE_DIR = System.getProperty("user.dir") + "/data/UserData";
+    private final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
     private DataStore dataStore;
 
     @FXML private Label warningText;
@@ -42,11 +43,11 @@ public class Controller {
     @FXML
     public void initialize() {
         mainAuthorizer = new Authorizer();
-        users = new ArrayList<User>();
         newAccountThreadRunning = false;
+        users = new ArrayList<User>();
         dataStore = new DataStore();
         users = dataStore.loadUsers(USER_FILE_DIR);
-        //setupDropdownList();
+        setupDropdownList();
 
     }
 
@@ -72,9 +73,7 @@ public class Controller {
         if (!newAccountThreadRunning) {
 
             warningText.setVisible(true);
-            try {
-                Thread.sleep(200);
-            } catch (Exception e){e.printStackTrace();}
+
 
             Thread newAccountThread = new Thread(
                     new Runnable() {
@@ -82,20 +81,31 @@ public class Controller {
                         public void run() {
                             newAccountThreadRunning = true;
 
+                            try {
+                                Thread.sleep(200);
+                            } catch (Exception e){e.printStackTrace();}
+
                             String newUserID = generateNewUserID();
                             currentUserCredentials = mainAuthorizer.authorizeUser(newUserID);
 
                             if (currentUserCredentials == null) {
                                 System.out.println("New user not created.");
+                                newAccountThreadRunning = false;
                                 return;
                             }
-                            String newEmailAddress = getNewUserEmailAddress(newUserID);
+                            String newEmailAddress = getNewUserEmailAddress();
 
 
                             User newUser = new User(newUserID, newEmailAddress);
                             users.add(newUser);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    warningText.setVisible(false);
+                                }
+                            });
                             newAccountThreadRunning = false;
-                            warningText.setVisible(false);
+
                         }
 
                     });
@@ -104,22 +114,23 @@ public class Controller {
     }
     private String generateNewUserID() {
         int lastNumber = 0;
-        for (int i = 0; i < users.size(); i++){
-            User user = users.get(i);
+        for (User user : users) {
             String num = user.getUserID().replace("user", "");
             int number = Integer.parseInt(num);
-            if (number > lastNumber){
+            if (number > lastNumber) {
                 lastNumber = number;
             }
         }
         return "user" + (lastNumber+1);
     }
 
-    private String getNewUserEmailAddress(String userID){
+    private String getNewUserEmailAddress(){
         String emailAddress = null;
         try {
             Gmail gmail = mainAuthorizer.getGmailService(currentUserCredentials);
-            emailAddress = gmail.users().getProfile(userID).toString();
+            Profile profile = gmail.users().getProfile("me").execute();
+            emailAddress = profile.getEmailAddress();
+
         } catch (Exception e){e.printStackTrace();}
 
         return emailAddress;

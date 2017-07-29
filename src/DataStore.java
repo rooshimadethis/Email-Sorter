@@ -7,7 +7,7 @@ public class DataStore implements Serializable{
 
     }
     public ArrayList<User> loadUsers(String USER_FILE_DIR) {
-        ArrayList<User> users = null;
+        ArrayList<User> users = new ArrayList<User>();
         try {
             File userFile = new File(USER_FILE_DIR);
             Boolean filemade = userFile.getParentFile().mkdir();
@@ -18,7 +18,9 @@ public class DataStore implements Serializable{
             users = (ArrayList<User>)objectInputStream.readObject();
 
         } catch (Exception e) {e.printStackTrace();}
-        return users;
+        if (users != null) {
+            return users;
+        } else return new ArrayList<User>();
     }
 
     public void saveUsers(String USER_FILE_DIR, ArrayList<User> users){
