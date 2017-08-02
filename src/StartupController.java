@@ -7,11 +7,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import com.google.api.services.gmail.model.Profile;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+
+import javax.swing.*;
 import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
@@ -20,12 +26,13 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.prefs.Preferences;
 
-public class Controller {
+public class StartupController {
     Credential currentUserCredentials;
     ArrayList<User> users;
     Authorizer mainAuthorizer;
-    User currentUser;
+    int currentUserIndex;
     Boolean newAccountThreadRunning;
     private final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
     private DataStore dataStore;
@@ -36,26 +43,22 @@ public class Controller {
 
     //TODO maybe keep in a few methods
 
-
-
-
-
     @FXML
     public void initialize() {
         mainAuthorizer = new Authorizer();
         newAccountThreadRunning = false;
         users = new ArrayList<User>();
         dataStore = new DataStore();
-        users = dataStore.loadUsers(USER_FILE_DIR);
-        setupDropdownList();
+        users = DataStore.loadUsers(USER_FILE_DIR);
+        updateDropdownList();
 
     }
 
     public void saveUsers() {
-        dataStore.saveUsers(USER_FILE_DIR, users);
+        DataStore.saveUsers(USER_FILE_DIR, users);
     }
 
-    private void setupDropdownList() {
+    private void updateDropdownList() {
         ObservableList<String> accountDropdownAccounts =
                 FXCollections.observableArrayList();
         for (User user : users){
@@ -65,10 +68,27 @@ public class Controller {
     }
 
     @FXML protected void handleLogin(ActionEvent event){
-        if ((accountDropdown.getSelectionModel().getSelectedItem()) == null){
-            System.out.println("nothing selected");
+        String selectedItem = accountDropdown.getSelectionModel().getSelectedItem();
+
+        //TODO say nothing was selected in GUI
+        if (selectedItem == null) {
+            System.out.println("nothing was selected");
+            return;
+        }
+
+        for (int i = 0; i < users.size(); i++){
+            if (selectedItem.equals(users.get(i).getEmailAddress())){
+                currentUserIndex = i;
+                if (!users.get(i).hasDoneInitialSetup()){
+                    Main.getInstance().setCurrentUser(users.get((i)));
+                    Main.getInstance().goToInitializeHardDrive();
+
+                }
+            }
         }
     }
+
+    //TODO change Thread to Task
     @FXML protected void makeNewAccount() {
         if (!newAccountThreadRunning) {
 
@@ -80,10 +100,6 @@ public class Controller {
                         @Override
                         public void run() {
                             newAccountThreadRunning = true;
-
-                            try {
-                                Thread.sleep(200);
-                            } catch (Exception e){e.printStackTrace();}
 
                             String newUserID = generateNewUserID();
                             currentUserCredentials = mainAuthorizer.authorizeUser(newUserID);
@@ -98,6 +114,9 @@ public class Controller {
 
                             User newUser = new User(newUserID, newEmailAddress);
                             users.add(newUser);
+
+                            DataStore.createNewPreferences(newUserID);
+
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
@@ -105,13 +124,14 @@ public class Controller {
                                 }
                             });
                             newAccountThreadRunning = false;
-
+                            updateDropdownList();
                         }
 
                     });
             newAccountThread.start();
         }
     }
+
     private String generateNewUserID() {
         int lastNumber = 0;
         for (User user : users) {
