@@ -65,9 +65,7 @@ public class DataStore implements Serializable{
         return OUTGOING_PREFERENCE_KEY;
     }
 
-    public static String getSeparateKey() {
-        return SEPARATE_PREFERENCE_KEY;
-    }
+    public static String getSeparateKey() { return SEPARATE_PREFERENCE_KEY; }
 
     public static String getSaveDelayKey() {
         return SAVE_DELAY_PREFERENCE_KEY;

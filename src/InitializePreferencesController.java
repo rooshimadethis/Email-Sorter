@@ -38,7 +38,14 @@ public class InitializePreferencesController {
         preferences.putBoolean(DataStore.getIncomingKey(), inCheckBox.isSelected());
         preferences.putBoolean(DataStore.getOutgoingKey(), outCheckBox.isSelected());
         preferences.putBoolean(DataStore.getSeparateKey(), separateCheckBox.isSelected());
-        preferences.put(DataStore.getSaveDelayKey(), saveDelayComboBox.getValue());
+        if (saveDelayComboBox.getValue() != null) {
+            preferences.put(DataStore.getSaveDelayKey(), saveDelayComboBox.getValue());
+        }
+        switchToPrimaryScreen();
+    }
+
+    private void switchToPrimaryScreen() {
+        Main.getInstance().goToPrimaryScreen();
     }
 
 }

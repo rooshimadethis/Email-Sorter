@@ -67,6 +67,22 @@ public class Main extends Application {
         }
     }
 
+    public void goToPrimaryScreen() {
+        try {
+            replaceSceneContent("/fxml/primaryScreen.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goToAddNewFolder() {
+        try {
+            replaceSceneContent("/fxml/addNewFolder.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private Parent replaceSceneContent(String fxml) {
         try {
@@ -78,6 +94,7 @@ public class Main extends Application {
             if (fxml.contains("startup")) {
                 startupController = loader.getController();
             }
+
             Scene scene = stage.getScene();
             if (scene == null) {
                 scene = new Scene(page, 700, 450);
