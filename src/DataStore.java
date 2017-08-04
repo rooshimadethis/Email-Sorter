@@ -10,11 +10,13 @@ public class DataStore implements Serializable{
     private static final String OUTGOING_PREFERENCE_KEY = "outgoing_key";
     private static final String SEPARATE_PREFERENCE_KEY = "separate_key";
     private static final String SAVE_DELAY_PREFERENCE_KEY = "save_delay_key";
+    private static final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
+    private static final String TYPE_FILE_DIR = System.getProperty("user.dir") + "\\data\\TypeData";
 
     public DataStore() {
 
     }
-    public static ArrayList<User> loadUsers(String USER_FILE_DIR) {
+    public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
         try {
             File userFile = new File(USER_FILE_DIR);
@@ -31,11 +33,38 @@ public class DataStore implements Serializable{
         } else return new ArrayList<User>();
     }
 
-    public static void saveUsers(String USER_FILE_DIR, ArrayList<User> users){
+    public static void saveUsers(ArrayList<User> users){
         try {
             FileOutputStream outputStream = new FileOutputStream(USER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(users);
+            outputStream.close();
+            objectOutputStream.close();
+        }catch (Exception e) {e.printStackTrace();}
+    }
+
+    public static ArrayList<Type> loadTypes() {
+        ArrayList<Type> types = new ArrayList<Type>();
+        try {
+            File typeFile = new File(TYPE_FILE_DIR);
+            Boolean filemade = typeFile.getParentFile().mkdir();
+
+            FileInputStream fileInputStream = new FileInputStream(typeFile);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            types = (ArrayList<Type>)objectInputStream.readObject();
+
+        } catch (Exception e) {e.printStackTrace();}
+        if (types != null) {
+            return types;
+        } else return new ArrayList<Type>();
+    }
+
+    public static void saveTypes(ArrayList<Type> types){
+        try {
+            FileOutputStream outputStream = new FileOutputStream(TYPE_FILE_DIR);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(types);
             outputStream.close();
             objectOutputStream.close();
         }catch (Exception e) {e.printStackTrace();}

@@ -13,14 +13,36 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 
 public class PrimaryScreenController {
+    private ArrayList<Folder> folders;
+    private ArrayList<Type> types;
 
     @FXML
     public void initialize() {
-
+        types = DataStore.loadTypes();
+        //DataStore.loadFolders();
     }
 
     @FXML protected void goToAddNewFolder() {
         Main.getInstance().goToAddNewFolder();
     }
 
+    public void addNewFolder(String name, String type, ArrayList<String> keywords){
+        for (Type iteratingType : types){
+            if (iteratingType.getName().equals(type)){
+                folders.add(new Folder(name, iteratingType, keywords));
+            }
+        }
+    }
+
+    public void saveTypes() {
+        DataStore.saveTypes(types);
+    }
+
+    public ArrayList<Folder> getFolders() {
+        return folders;
+    }
+
+    public ArrayList<Type> getTypes() {
+        return types;
+    }
 }

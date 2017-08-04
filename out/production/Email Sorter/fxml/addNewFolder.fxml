@@ -25,12 +25,12 @@
         </rowConstraints>
          <children>
             <Label text="Name" />
-            <TextField fx:id="nameTextField" onKeyTyped="#nameChangesKeywords" GridPane.columnIndex="1" />
+            <TextField fx:id="nameTextField" GridPane.columnIndex="1" />
             <Label text="type" GridPane.rowIndex="1" />
             <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="keyowrds" GridPane.rowIndex="2" />
             <TextArea fx:id="keywordTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="add" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onMouseClicked="#createNewFolder" text="add" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

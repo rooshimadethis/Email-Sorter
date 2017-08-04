@@ -8,7 +8,7 @@ public class Folder {
     private String path;
     private boolean custom;
 
-    public Folder(String name, ArrayList<String> keywords, Type type) {
+    public Folder(String name, Type type, ArrayList<String> keywords) {
         this.name = name;
         this.keywords = keywords;
         this.type = type;

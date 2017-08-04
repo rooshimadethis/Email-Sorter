@@ -10,6 +10,7 @@ public class Main extends Application {
     private static Main instance;
 
     private StartupController startupController;
+    private PrimaryScreenController primaryScreenController;
     private Stage stage;
     private User currentUser;
 
@@ -41,6 +42,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         super.stop();
         startupController.saveUsers();
+        primaryScreenController.saveTypes();
     }
 
     public void goToStartup() {
@@ -93,6 +95,8 @@ public class Main extends Application {
 
             if (fxml.contains("startup")) {
                 startupController = loader.getController();
+            } else if (fxml.contains("primaryScreen")){
+                primaryScreenController = loader.getController();
             }
 
             Scene scene = stage.getScene();
@@ -125,5 +129,9 @@ public class Main extends Application {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public PrimaryScreenController getPrimaryScreenController() {
+        return primaryScreenController;
     }
 }

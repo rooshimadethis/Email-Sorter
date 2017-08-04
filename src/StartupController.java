@@ -34,7 +34,7 @@ public class StartupController {
     Authorizer mainAuthorizer;
     int currentUserIndex;
     Boolean newAccountThreadRunning;
-    private final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
+
     private DataStore dataStore;
 
     @FXML private Label warningText;
@@ -49,13 +49,13 @@ public class StartupController {
         newAccountThreadRunning = false;
         users = new ArrayList<User>();
         dataStore = new DataStore();
-        users = DataStore.loadUsers(USER_FILE_DIR);
+        users = DataStore.loadUsers();
         updateDropdownList();
 
     }
 
     public void saveUsers() {
-        DataStore.saveUsers(USER_FILE_DIR, users);
+        DataStore.saveUsers(users);
     }
 
     private void updateDropdownList() {
