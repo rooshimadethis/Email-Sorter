@@ -71,7 +71,7 @@ public class AddNewFolderController {
         String[] rawKeysArray = keywordTextArea.getText().split(", ");
         ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(rawKeysArray));
 
-        if (name == null || name.equals("")) {
+        if (name == null || !name.equals("")) {
             Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
         }
         //TODO set warning/cancel

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Folder {
+public class Folder implements Serializable{
     private String name;
     private Type type;
     private ArrayList<String> keywords;

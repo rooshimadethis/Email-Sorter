@@ -98,7 +98,7 @@ public class DataStore implements Serializable{
         } else return new ArrayList<Folder>();
     }
 
-    public static void saveFolders(ArrayList<Type> folders){
+    public static void saveFolders(ArrayList<Folder> folders){
         try {
             FileOutputStream outputStream = new FileOutputStream(FOLDER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);

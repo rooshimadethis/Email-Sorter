@@ -43,7 +43,7 @@ public class PrimaryScreenController {
         DataStore.saveTypes(types);
     }
     public void saveFolders() {
-        DataStore.saveFolders(types);
+        DataStore.saveFolders(folders);
     }
 
     public ArrayList<Folder> getFolders() {
