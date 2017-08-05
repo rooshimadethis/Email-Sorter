@@ -19,11 +19,15 @@ public class PrimaryScreenController {
     @FXML
     public void initialize() {
         types = DataStore.loadTypes();
-        //DataStore.loadFolders();
+        folders = DataStore.loadFolders();
     }
 
     @FXML protected void goToAddNewFolder() {
         Main.getInstance().goToAddNewFolder();
+    }
+
+    @FXML protected void goToEditFolder() {
+        Main.getInstance().goToEditFolder();
     }
 
     public void addNewFolder(String name, String type, ArrayList<String> keywords){

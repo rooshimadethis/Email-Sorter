@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.prefs.Preferences;
 
 public class DataStore implements Serializable{
@@ -47,12 +48,21 @@ public class DataStore implements Serializable{
         ArrayList<Type> types = new ArrayList<Type>();
         try {
             File typeFile = new File(TYPE_FILE_DIR);
-            Boolean filemade = typeFile.getParentFile().mkdir();
+            Boolean fileExists = typeFile.exists();
+            Boolean directoryMade = typeFile.getParentFile().mkdir();
 
-            FileInputStream fileInputStream = new FileInputStream(typeFile);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-            types = (ArrayList<Type>)objectInputStream.readObject();
+            if (!fileExists) {
+
+                Type architectural = new Type("Architectural", new ArrayList<String>(Arrays.asList("General", "Structural", "Mechanical", "Electrical", "Plumbing", "Canopy", "Rendering", "Contractor", "Invoice", "Fee Proposal", "Contracts", "Prototype", "Permit", "Franchise", "Misc")));
+                types.add(architectural);
+
+            } else {
+                FileInputStream fileInputStream = new FileInputStream(typeFile);
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+                types = (ArrayList<Type>) objectInputStream.readObject();
+            }
 
         } catch (Exception e) {e.printStackTrace();}
         if (types != null) {
@@ -68,6 +78,11 @@ public class DataStore implements Serializable{
             outputStream.close();
             objectOutputStream.close();
         }catch (Exception e) {e.printStackTrace();}
+    }
+
+    //TODO implement
+    public static ArrayList<Folder> loadFolders() {
+        return new ArrayList<Folder>();
     }
 
     public static void createNewPreferences(String userID){

@@ -85,6 +85,14 @@ public class Main extends Application {
         }
     }
 
+    public void goToEditFolder() {
+        try {
+            replaceSceneContent("/fxml/editFolder.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private Parent replaceSceneContent(String fxml) {
         try {

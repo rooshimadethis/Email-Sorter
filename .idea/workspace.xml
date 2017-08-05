@@ -61,28 +61,15 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+            <state relative-caret-position="0">
+              <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
                 <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
                 <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-                <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-                <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-                <element signature="e#3436#3437#0" expanded="true" />
-                <element signature="e#3482#3483#0" expanded="true" />
+                <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartupController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StartupController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="57" column="33" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -100,13 +87,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddNewFolderController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddNewFolderController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="48" column="63" lean-forward="false" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#701#1315#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,7 +110,29 @@
             <state relative-caret-position="238">
               <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding>
-                <marker date="1501709092981" expanded="true" signature="976:1940" ph="..." />
+                <marker date="1501878318690" expanded="true" signature="976:1973" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrimaryScreenController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
+              <folding>
+                <element signature="e#1981#1987#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,8 +141,8 @@
       <file leaf-file-name="EditFolderController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+            <state relative-caret-position="301">
+              <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,39 +152,24 @@
       </file>
       <file leaf-file-name="editFolder.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fxml/editFolder.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+          <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
               <folding>
-                <marker date="1501800465512" expanded="true" signature="898:1121" ph="..." />
-                <marker date="1501800465512" expanded="true" signature="942:1095" ph="..." />
+                <marker date="1501878618956" expanded="true" signature="927:1121" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrimaryScreenController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+      <file leaf-file-name="InitializeHardDriveController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding>
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#1195#1196#0" expanded="true" />
-                <element signature="e#1225#1226#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Folder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Folder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="357">
+              <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -225,29 +221,29 @@
         <option value="$PROJECT_DIR$/src/fxml/initialize.fxml" />
         <option value="$PROJECT_DIR$/src/fxml/initializeHardDrive.fxml" />
         <option value="$PROJECT_DIR$/src/InitializeController.java" />
-        <option value="$PROJECT_DIR$/src/InitializeHardDriveController.java" />
         <option value="$PROJECT_DIR$/src/fxml/initializePreferences.fxml" />
         <option value="$PROJECT_DIR$/src/fxml/primary.fxml" />
         <option value="$PROJECT_DIR$/src/InitializePreferencesController.java" />
         <option value="$PROJECT_DIR$/src/Category.java" />
-        <option value="$PROJECT_DIR$/src/fxml/primaryScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/fxml/addNewFolder.fxml" />
-        <option value="$PROJECT_DIR$/src/DataStore.java" />
-        <option value="$PROJECT_DIR$/src/Type.java" />
         <option value="$PROJECT_DIR$/src/StartupController.java" />
         <option value="$PROJECT_DIR$/src/Folder.java" />
-        <option value="$PROJECT_DIR$/src/AddNewFolderController.java" />
+        <option value="$PROJECT_DIR$/src/InitializeHardDriveController.java" />
+        <option value="$PROJECT_DIR$/src/fxml/primaryScreen.fxml" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/PrimaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/fxml/editFolder.fxml" />
+        <option value="$PROJECT_DIR$/src/PrimaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/EditFolderController.java" />
+        <option value="$PROJECT_DIR$/src/Type.java" />
+        <option value="$PROJECT_DIR$/src/DataStore.java" />
+        <option value="$PROJECT_DIR$/src/fxml/addNewFolder.fxml" />
+        <option value="$PROJECT_DIR$/src/AddNewFolderController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="825" />
-    <option name="y" value="-12" />
+    <option name="x" value="80" />
+    <option name="y" value="-8" />
     <option name="width" value="1613" />
     <option name="height" value="914" />
   </component>
@@ -269,9 +265,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -294,6 +289,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,7 +303,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../To do stuff for other projects" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -492,7 +488,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16041666" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -527,7 +523,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="48" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -536,13 +532,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataStore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -577,10 +566,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -626,10 +612,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -668,10 +651,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -710,10 +690,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -852,24 +829,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1764" column="0" lean-forward="false" selection-start-line="1764" selection-start-column="0" selection-end-line="1764" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/beans/value/ChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
           <caret line="62" column="9" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -888,42 +851,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="64" lean-forward="true" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/event/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/stage/Stage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="562" column="0" lean-forward="false" selection-start-line="562" selection-start-column="0" selection-end-line="562" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/editFolder.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <marker date="1501878618956" expanded="true" signature="927:1121" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="2587" column="0" lean-forward="false" selection-start-line="2587" selection-start-column="0" selection-end-line="2587" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
+          <folding>
+            <element signature="e#1981#1987#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/primaryScreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <marker date="1501878318690" expanded="true" signature="976:1973" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -938,69 +979,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/primaryScreen.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <marker date="1501709092981" expanded="true" signature="976:1940" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/editFolder.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
-          <folding>
-            <marker date="1501800465512" expanded="true" signature="898:1121" ph="..." />
-            <marker date="1501800465512" expanded="true" signature="942:1095" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="48" column="63" lean-forward="false" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
+            <element signature="e#701#1315#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
           </folding>
         </state>
       </provider>

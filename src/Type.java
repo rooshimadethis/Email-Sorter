@@ -5,6 +5,11 @@ public class Type implements Serializable {
     private String name;
     private ArrayList<String> subcategories;
 
+    public Type(String name, ArrayList<String> subcategories) {
+        this.name = name;
+        this.subcategories = subcategories;
+    }
+
     public String getName() {
         return name;
     }

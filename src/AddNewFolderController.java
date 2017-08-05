@@ -13,12 +13,13 @@ import java.util.Arrays;
 public class AddNewFolderController {
 
     @FXML private TextArea keywordTextArea;
-    @FXML private ComboBox<String> types;
+    @FXML private ComboBox<String> typesComboBox;
     @FXML private TextField nameTextField;
     private String oldArea;
 
     @FXML
     public void initialize() {
+        keywordTextArea.setWrapText(true);
         nameTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -33,18 +34,40 @@ public class AddNewFolderController {
             }
         });
 
+        typesComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String selected = typesComboBox.getSelectionModel().getSelectedItem();
+                if (selected != null){
+                    ArrayList<Type> types = Main.getInstance().getPrimaryScreenController().getTypes();
+                    for (Type type : types){
+                        if (type.getName().equals(selected)){
+                            String keywords = "";
+                            for (String subcategory : type.getSubcategories()){
+                                keywords += (subcategory + ", ");
+                            }
+                            keywordTextArea.appendText(keywords);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+
+
         ObservableList<String> typesList =
                 FXCollections.observableArrayList();
         ArrayList<Type> typesArrayList = Main.getInstance().getPrimaryScreenController().getTypes();
         for (Type type : typesArrayList){
             typesList.add(type.getName());
         }
-        types.setItems(typesList);
+        typesComboBox.setItems(typesList);
     }
 
     @FXML protected void createNewFolder(){
         String name = nameTextField.getText();
-        String type = types.getValue();
+        String type = typesComboBox.getValue();
         String[] rawKeysArray = keywordTextArea.getText().split(", ");
         ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(rawKeysArray));
 

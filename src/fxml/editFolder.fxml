@@ -14,9 +14,9 @@
                <children>
                   <ComboBox fx:id="folderDropdown" layoutX="225.0" layoutY="38.0" prefWidth="150.0" />
                </children></Pane>
-            <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="folderListScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
               <content>
-                <AnchorPane fx:id="folderListScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="585.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="585.0" />
               </content>
             </ScrollPane>
          </children>

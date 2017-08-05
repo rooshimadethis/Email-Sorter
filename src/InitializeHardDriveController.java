@@ -29,7 +29,7 @@ public class InitializeHardDriveController {
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select your root email directory");
-        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home") + "Documents"));
+        //directoryChooser.setInitialDirectory(new File(System.getProperty("user.home") + "Documents"));
         emailDirectory = directoryChooser.showDialog(Main.getInstance().getStage().getOwner());
     }
 
