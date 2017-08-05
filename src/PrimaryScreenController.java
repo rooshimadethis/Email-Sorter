@@ -20,6 +20,7 @@ public class PrimaryScreenController {
     public void initialize() {
         types = DataStore.loadTypes();
         folders = DataStore.loadFolders();
+        System.out.println();
     }
 
     @FXML protected void goToAddNewFolder() {
@@ -40,6 +41,9 @@ public class PrimaryScreenController {
 
     public void saveTypes() {
         DataStore.saveTypes(types);
+    }
+    public void saveFolders() {
+        DataStore.saveFolders(types);
     }
 
     public ArrayList<Folder> getFolders() {

@@ -13,6 +13,7 @@ public class DataStore implements Serializable{
     private static final String SAVE_DELAY_PREFERENCE_KEY = "save_delay_key";
     private static final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
     private static final String TYPE_FILE_DIR = System.getProperty("user.dir") + "\\data\\TypeData";
+    private static final String FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\FolderData";
 
     public DataStore() {
 
@@ -80,9 +81,31 @@ public class DataStore implements Serializable{
         }catch (Exception e) {e.printStackTrace();}
     }
 
-    //TODO implement
     public static ArrayList<Folder> loadFolders() {
-        return new ArrayList<Folder>();
+        ArrayList<Folder> folders = new ArrayList<Folder>();
+        try {
+            File folderFile = new File(FOLDER_FILE_DIR);
+            Boolean directoryMade = folderFile.getParentFile().mkdir();
+
+            FileInputStream fileInputStream = new FileInputStream(folderFile);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            folders = (ArrayList<Folder>)objectInputStream.readObject();
+
+        } catch (Exception e) {e.printStackTrace();}
+        if (folders != null) {
+            return folders;
+        } else return new ArrayList<Folder>();
+    }
+
+    public static void saveFolders(ArrayList<Type> folders){
+        try {
+            FileOutputStream outputStream = new FileOutputStream(FOLDER_FILE_DIR);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(folders);
+            outputStream.close();
+            objectOutputStream.close();
+        }catch (Exception e) {e.printStackTrace();}
     }
 
     public static void createNewPreferences(String userID){

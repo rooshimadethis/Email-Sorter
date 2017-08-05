@@ -71,7 +71,12 @@ public class AddNewFolderController {
         String[] rawKeysArray = keywordTextArea.getText().split(", ");
         ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(rawKeysArray));
 
-        Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
+        if (name == null || name.equals("")) {
+            Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
+        }
+        //TODO set warning/cancel
+        Main.getInstance().closeModalWindow();
+
 
     }
 }

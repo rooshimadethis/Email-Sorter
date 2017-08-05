@@ -58,59 +58,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
+            <state relative-caret-position="488">
+              <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
                 <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
                 <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+                <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+                <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+                <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+                <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
                 <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addNewFolder.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fxml/addNewFolder.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddNewFolderController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="48" column="63" lean-forward="false" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#701#1315#0" expanded="true" />
-                <element signature="e#1314#1315#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="primaryScreen.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fxml/primaryScreen.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding>
-                <marker date="1501878318690" expanded="true" signature="976:1973" ph="..." />
               </folding>
             </state>
           </provider>
@@ -119,9 +82,12 @@
       <file leaf-file-name="PrimaryScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="366">
+              <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+              <folding>
+                <element signature="e#778#779#0" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,48 +95,17 @@
       <file leaf-file-name="DataStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
+            <state relative-caret-position="680">
+              <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
               <folding>
-                <element signature="e#1981#1987#0" expanded="true" />
+                <element signature="method#loadUsers#0;class#DataStore#0" expanded="false" />
+                <element signature="method#saveUsers#0;class#DataStore#0" expanded="false" />
+                <element signature="method#loadTypes#0;class#DataStore#0" expanded="false" />
+                <element signature="method#saveTypes#0;class#DataStore#0" expanded="false" />
+                <element signature="e#3623#3631#0" expanded="true" />
+                <element signature="method#createNewPreferences#0;class#DataStore#0" expanded="false" />
+                <element signature="method#getPreferencesforCurrentUser#0;class#DataStore#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditFolderController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editFolder.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fxml/editFolder.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-              <folding>
-                <marker date="1501878618956" expanded="true" signature="927:1121" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InitializeHardDriveController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -193,11 +128,14 @@
       <find>datastore</find>
       <find>accountDropdown</find>
       <find>user</find>
+      <find>window</find>
+      <find>dialog</find>
     </findStrings>
     <replaceStrings>
       <replace>Main</replace>
       <replace>saveDelaysComboBox</replace>
       <replace>saveDelayComboBox</replace>
+      <replace>modal</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -229,23 +167,22 @@
         <option value="$PROJECT_DIR$/src/Folder.java" />
         <option value="$PROJECT_DIR$/src/InitializeHardDriveController.java" />
         <option value="$PROJECT_DIR$/src/fxml/primaryScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/fxml/editFolder.fxml" />
-        <option value="$PROJECT_DIR$/src/PrimaryScreenController.java" />
         <option value="$PROJECT_DIR$/src/EditFolderController.java" />
         <option value="$PROJECT_DIR$/src/Type.java" />
-        <option value="$PROJECT_DIR$/src/DataStore.java" />
         <option value="$PROJECT_DIR$/src/fxml/addNewFolder.fxml" />
         <option value="$PROJECT_DIR$/src/AddNewFolderController.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/PrimaryScreenController.java" />
+        <option value="$PROJECT_DIR$/src/DataStore.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="80" />
-    <option name="y" value="-8" />
-    <option name="width" value="1613" />
-    <option name="height" value="914" />
+    <option name="x" value="960" />
+    <option name="width" value="960" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -265,8 +202,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,17 +217,10 @@
               <item name="Email Sorter" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Email Sorter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Email Sorter" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -303,7 +234,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../To do stuff for other projects" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -488,7 +419,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16041666" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -520,10 +451,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PrimaryScreenController.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="67" />
+      <option name="time" value="71" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -566,6 +505,11 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -612,6 +556,11 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -651,6 +600,11 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -690,6 +644,11 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -855,7 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,19 +828,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="562" column="0" lean-forward="false" selection-start-line="562" selection-start-column="0" selection-end-line="562" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
+            <element signature="e#19014#19015#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -908,17 +855,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="2587" column="0" lean-forward="false" selection-start-line="2587" selection-start-column="0" selection-end-line="2587" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
+        <state relative-caret-position="391">
           <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -930,28 +869,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+    <entry file="file://$PROJECT_DIR$/src/fxml/addNewFolder.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding>
-            <element signature="e#1981#1987#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -968,25 +896,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/addNewFolder.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="1766" column="0" lean-forward="false" selection-start-line="1766" selection-start-column="0" selection-end-line="1766" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="48" column="63" lean-forward="false" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
+        <state relative-caret-position="432">
+          <caret line="76" column="33" lean-forward="false" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#701#1315#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <folding>
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+          <folding>
+            <element signature="method#loadUsers#0;class#DataStore#0" expanded="false" />
+            <element signature="method#saveUsers#0;class#DataStore#0" expanded="false" />
+            <element signature="method#loadTypes#0;class#DataStore#0" expanded="false" />
+            <element signature="method#saveTypes#0;class#DataStore#0" expanded="false" />
+            <element signature="e#3623#3631#0" expanded="true" />
+            <element signature="method#createNewPreferences#0;class#DataStore#0" expanded="false" />
+            <element signature="method#getPreferencesforCurrentUser#0;class#DataStore#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToPrimaryScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>

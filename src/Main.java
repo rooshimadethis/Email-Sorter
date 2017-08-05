@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.prefs.Preferences;
@@ -12,6 +13,7 @@ public class Main extends Application {
     private StartupController startupController;
     private PrimaryScreenController primaryScreenController;
     private Stage stage;
+    private Stage modal;
     private User currentUser;
 
 
@@ -43,6 +45,7 @@ public class Main extends Application {
         super.stop();
         startupController.saveUsers();
         primaryScreenController.saveTypes();
+        primaryScreenController.saveFolders();
     }
 
     public void goToStartup() {
@@ -79,7 +82,7 @@ public class Main extends Application {
 
     public void goToAddNewFolder() {
         try {
-            replaceSceneContent("/fxml/addNewFolder.fxml");
+            popUpModalWindow("/fxml/addNewFolder.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,12 +90,35 @@ public class Main extends Application {
 
     public void goToEditFolder() {
         try {
-            replaceSceneContent("/fxml/editFolder.fxml");
+            popUpModalWindow("/fxml/editFolder.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void popUpModalWindow(String fxml) {
+        try {
+            modal = new Stage();
+
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+            Parent root = loader.load();
+
+            modal.setScene(new Scene(root));
+            modal.initModality(Modality.APPLICATION_MODAL);
+
+            modal.initOwner(modal.getOwner());
+
+            modal.showAndWait();
+
+        } catch (Exception e) {e.printStackTrace();}
+
+    }
+
+    public void closeModalWindow(){
+        if (modal != null){
+            modal.close();
+        }
+    }
 
     private Parent replaceSceneContent(String fxml) {
         try {
