@@ -20,7 +20,7 @@ public class AddNewFolderController {
     @FXML
     public void initialize() {
         keywordTextArea.setWrapText(true);
-        nameTextField.textProperty().addListener(new ChangeListener<String>() {
+        /*nameTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 String newArea = keywordTextArea.getText().replace(oldArea + ", ", "");
@@ -33,6 +33,7 @@ public class AddNewFolderController {
                 oldArea = nameTextField.getText();
             }
         });
+        */
 
         typesComboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -71,12 +72,22 @@ public class AddNewFolderController {
         String[] rawKeysArray = keywordTextArea.getText().split(", ");
         ArrayList<String> keywords = new ArrayList<String>(Arrays.asList(rawKeysArray));
 
-        if (name == null || !name.equals("")) {
-            Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
+        if (name != null) {
+            if (!name.equals("")) {
+                Boolean exists = false;
+                for (Folder currentFolder : Main.getInstance().getPrimaryScreenController().getFolders()) {
+                    if (currentFolder.getName().equals(name)) {
+                        exists = true;
+                }
+            }
+            if (!exists) {
+                Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
+            }
         }
-        //TODO set warning/cancel
+    }
+    //TODO set warning/cancel
         Main.getInstance().closeModalWindow();
 
 
-    }
+}
 }

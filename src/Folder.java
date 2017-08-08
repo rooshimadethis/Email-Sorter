@@ -10,13 +10,15 @@ public class Folder implements Serializable{
     private String path;
     private boolean custom;
 
-    public Folder(String name, Type type, ArrayList<String> keywords) {
+    public Folder(String name, Type type, ArrayList<String> keywords, String path) {
         this.name = name;
         this.keywords = keywords;
         this.type = type;
+        this.path = path;
+        subfolders = new ArrayList<Subfolder>();
         //TODO check for custom
-        ArrayList<String> originalTypes = type.getSubcategories();
-        for (String subfolder : originalTypes){
+
+        for (String subfolder : keywords){
             addNewSubfolder(subfolder);
         }
 
@@ -24,9 +26,9 @@ public class Folder implements Serializable{
 
     public void addNewSubfolder(String subfolderName) {
         Subfolder newSubfolder = new Subfolder(subfolderName);
-        newSubfolder.setPath(path + subfolderName);
+        newSubfolder.setPath(path + "/" + subfolderName);
         File newFile = new File(newSubfolder.getPath());
-        newFile.mkdir();
+        newFile.mkdirs();
         subfolders.add(newSubfolder);
     }
 

@@ -58,56 +58,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-620">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
-                <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
-                <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-                <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-                <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-                <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
-                <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InitializePreferencesController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/InitializePreferencesController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding>
-                <element signature="e#1811#1812#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrimaryScreenController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PrimaryScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
+            <state relative-caret-position="360">
+              <caret line="110" column="38" lean-forward="true" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
               <folding>
-                <element signature="method#getHardDriveData#0;class#PrimaryScreenController#0" expanded="false" />
-                <marker date="1502225242612" expanded="false" signature="3228:3239" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="3277:3283" ph=" }" />
-                <marker date="1502225242612" expanded="false" signature="3326:3337" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="3373:3379" ph=" }" />
-                <marker date="1502225242612" expanded="false" signature="3954:3965" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="3992:3998" ph=" }" />
-                <marker date="1502225242612" expanded="false" signature="4028:4039" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="4070:4076" ph=" }" />
-                <marker date="1502225242612" expanded="false" signature="4119:4130" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="4145:4151" ph=" }" />
-                <marker date="1502225242612" expanded="false" signature="4190:4201" ph=" { " />
-                <marker date="1502225242612" expanded="false" signature="4214:4220" ph=" }" />
+                <element signature="e#3386#3387#0" expanded="true" />
+                <element signature="e#3439#3440#0" expanded="true" />
+                <marker date="1502227155046" expanded="false" signature="3483:3494" ph=" { " />
+                <marker date="1502227155046" expanded="false" signature="3530:3536" ph=" }" />
+                <marker date="1502227155046" expanded="false" signature="4102:4113" ph=" { " />
+                <marker date="1502227155046" expanded="false" signature="4140:4146" ph=" }" />
+                <marker date="1502227155046" expanded="false" signature="4176:4187" ph=" { " />
+                <marker date="1502227155046" expanded="false" signature="4218:4224" ph=" }" />
+                <marker date="1502227155046" expanded="false" signature="4267:4278" ph=" { " />
+                <marker date="1502227155046" expanded="false" signature="4293:4299" ph=" }" />
+                <marker date="1502227155046" expanded="false" signature="4338:4349" ph=" { " />
+                <marker date="1502227155046" expanded="false" signature="4362:4368" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -116,8 +84,8 @@
       <file leaf-file-name="InitializeHardDriveController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
-              <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+            <state relative-caret-position="230">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#1958#1959#0" expanded="true" />
                 <element signature="e#2020#2021#0" expanded="true" />
@@ -126,15 +94,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddNewFolderController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddNewFolderController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="425">
+              <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
               <folding>
-                <element signature="method#initialize#0;class#AddNewFolderController#0" expanded="false" />
-                <element signature="e#1369#2289#0" expanded="true" />
-                <element signature="e#2288#2289#0" expanded="true" />
+                <element signature="e#1382#2302#0" expanded="true" />
+                <element signature="e#2301#2302#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,11 +110,11 @@
       <file leaf-file-name="Folder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Folder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+            <state relative-caret-position="255">
+              <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
               <folding>
-                <element signature="e#1009#1010#0" expanded="true" />
-                <element signature="e#1041#1042#0" expanded="true" />
+                <element signature="e#1033#1034#0" expanded="true" />
+                <element signature="e#1065#1066#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,22 +219,22 @@
         <option value="$PROJECT_DIR$/src/fxml/editFolder.fxml" />
         <option value="$PROJECT_DIR$/src/Type.java" />
         <option value="$PROJECT_DIR$/src/fxml/addNewFolder.fxml" />
-        <option value="$PROJECT_DIR$/src/AddNewFolderController.java" />
         <option value="$PROJECT_DIR$/src/Subolder.java" />
         <option value="$PROJECT_DIR$/src/EditFolderController.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/DataStore.java" />
         <option value="$PROJECT_DIR$/src/InitializeHardDriveController.java" />
         <option value="$PROJECT_DIR$/src/Subfolder.java" />
-        <option value="$PROJECT_DIR$/src/Folder.java" />
         <option value="$PROJECT_DIR$/src/PrimaryScreenController.java" />
+        <option value="$PROJECT_DIR$/src/Folder.java" />
+        <option value="$PROJECT_DIR$/src/AddNewFolderController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="322" />
-    <option name="y" value="-15" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="132" />
+    <option name="y" value="-12" />
     <option name="width" value="800" />
     <option name="height" value="900" />
   </component>
@@ -497,7 +464,7 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -506,7 +473,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.125" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -545,11 +512,17 @@
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Folder.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="96" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -584,9 +557,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
             <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -632,9 +603,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
             <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -673,9 +642,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
             <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -714,9 +681,7 @@
             <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
             <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
             <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
             <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -913,14 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="2587" column="0" lean-forward="false" selection-start-line="2587" selection-start-column="0" selection-end-line="2587" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EditFolderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
@@ -948,33 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-620">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
-            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
-            <element signature="method#goToAddNewFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
-            <element signature="method#popUpModalWindow#0;class#Main#0" expanded="false" />
-            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InitializePreferencesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#1811#1812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Subfolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -987,33 +917,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Folder.java">
+    <entry file="file://$PROJECT_DIR$/src/InitializePreferencesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+        <state relative-caret-position="638">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1041#1042#0" expanded="true" />
+            <element signature="e#1811#1812#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="195">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
-            <element signature="method#initialize#0;class#AddNewFolderController#0" expanded="false" />
-            <element signature="e#1369#2289#0" expanded="true" />
-            <element signature="e#2288#2289#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#goToStartup#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializeHardDrive#0;class#Main#0" expanded="false" />
+            <element signature="method#goToInitializePreferences#0;class#Main#0" expanded="false" />
+            <element signature="method#goToEditFolder#0;class#Main#0" expanded="false" />
+            <element signature="method#closeModalWindow#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1268">
+          <caret line="1768" column="23" lean-forward="false" selection-start-line="1768" selection-start-column="23" selection-end-line="1768" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="110" column="38" lean-forward="true" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
+          <folding>
+            <element signature="e#3386#3387#0" expanded="true" />
+            <element signature="e#3439#3440#0" expanded="true" />
+            <marker date="1502227155046" expanded="false" signature="3483:3494" ph=" { " />
+            <marker date="1502227155046" expanded="false" signature="3530:3536" ph=" }" />
+            <marker date="1502227155046" expanded="false" signature="4102:4113" ph=" { " />
+            <marker date="1502227155046" expanded="false" signature="4140:4146" ph=" }" />
+            <marker date="1502227155046" expanded="false" signature="4176:4187" ph=" { " />
+            <marker date="1502227155046" expanded="false" signature="4218:4224" ph=" }" />
+            <marker date="1502227155046" expanded="false" signature="4267:4278" ph=" { " />
+            <marker date="1502227155046" expanded="false" signature="4293:4299" ph=" }" />
+            <marker date="1502227155046" expanded="false" signature="4338:4349" ph=" { " />
+            <marker date="1502227155046" expanded="false" signature="4362:4368" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="e#1033#1034#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InitializeHardDriveController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+        <state relative-caret-position="230">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#1958#1959#0" expanded="true" />
             <element signature="e#2020#2021#0" expanded="true" />
@@ -1021,24 +993,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrimaryScreenController.java">
+    <entry file="file://$PROJECT_DIR$/src/AddNewFolderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
+        <state relative-caret-position="425">
+          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
           <folding>
-            <element signature="method#getHardDriveData#0;class#PrimaryScreenController#0" expanded="false" />
-            <marker date="1502225242612" expanded="false" signature="3228:3239" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="3277:3283" ph=" }" />
-            <marker date="1502225242612" expanded="false" signature="3326:3337" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="3373:3379" ph=" }" />
-            <marker date="1502225242612" expanded="false" signature="3954:3965" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="3992:3998" ph=" }" />
-            <marker date="1502225242612" expanded="false" signature="4028:4039" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="4070:4076" ph=" }" />
-            <marker date="1502225242612" expanded="false" signature="4119:4130" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="4145:4151" ph=" }" />
-            <marker date="1502225242612" expanded="false" signature="4190:4201" ph=" { " />
-            <marker date="1502225242612" expanded="false" signature="4214:4220" ph=" }" />
+            <element signature="e#1382#2302#0" expanded="true" />
+            <element signature="e#2301#2302#0" expanded="true" />
           </folding>
         </state>
       </provider>

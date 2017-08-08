@@ -82,6 +82,9 @@ public class PrimaryScreenController {
             currentDrivePath =  newDirectory.getAbsolutePath().substring(0,2);
             currentFullPath = newDirectory.getAbsolutePath();
             
+        } else {
+            currentDrivePath = expectedRoot.getAbsolutePath().substring(0,2);
+            currentFullPath = expectedRoot.getAbsolutePath();
         }
     }
 
@@ -102,9 +105,9 @@ public class PrimaryScreenController {
                 newType = iteratingType;
             }
         }
+        String path = currentFullPath + "/" + name;
+        Folder newFolder = new Folder(name, newType, keywords, path);
 
-        Folder newFolder = new Folder(name, newType, keywords);
-        String path = currentFullPath + "/" + newFolder.getName();
         File newFile = new File(path);
         newFolder.setPath(path);
         newFile.mkdir();
