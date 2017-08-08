@@ -14,10 +14,36 @@ public class DataStore implements Serializable{
     private static final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
     private static final String TYPE_FILE_DIR = System.getProperty("user.dir") + "\\data\\TypeData";
     private static final String FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\FolderData";
+    private static final String HD_FILE_DIR = System.getProperty("user.dir") + "\\data\\HardDriveData";
 
-    public DataStore() {
-
+    public static void saveHardDriveInfo(String HDName, String folderPath){
+        String[] HDData = {HDName, folderPath};
+        try {
+            FileOutputStream outputStream = new FileOutputStream(HD_FILE_DIR);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(HDData);
+            outputStream.close();
+            objectOutputStream.close();
+        }catch (Exception e) {e.printStackTrace();}
     }
+
+    public static String[] loadHardDriveInfo() {
+        String[] data = null;
+        try {
+            File userFile = new File(HD_FILE_DIR);
+            Boolean filemade = userFile.getParentFile().mkdir();
+
+            FileInputStream fileInputStream = new FileInputStream(userFile);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            data = (String[])objectInputStream.readObject();
+
+        } catch (Exception e) {e.printStackTrace();}
+        if (data != null) {
+            return data;
+        } else return new String[]{};
+    }
+
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
         try {

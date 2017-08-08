@@ -15,6 +15,8 @@ public class Main extends Application {
     private Stage stage;
     private Stage modal;
     private User currentUser;
+    private String hardDriveName;
+    private String rootFolder;
 
 
     public Main() {
@@ -36,7 +38,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        System.out.println();
+        loadHardDriveData();
 
     }
 
@@ -46,6 +48,15 @@ public class Main extends Application {
         startupController.saveUsers();
         primaryScreenController.saveTypes();
         primaryScreenController.saveFolders();
+        DataStore.saveHardDriveInfo(hardDriveName, rootFolder);
+    }
+
+    private void loadHardDriveData(){
+        String[] data = DataStore.loadHardDriveInfo();
+        if (data.length == 2) {
+            hardDriveName = data[0];
+            rootFolder = data[1];
+        }
     }
 
     public void goToStartup() {
@@ -167,5 +178,21 @@ public class Main extends Application {
 
     public PrimaryScreenController getPrimaryScreenController() {
         return primaryScreenController;
+    }
+
+    public String getRootFolder() {
+        return rootFolder;
+    }
+
+    public void setRootFolder(String rootFolder) {
+        this.rootFolder = rootFolder;
+    }
+
+    public String getHardDriveName() {
+        return hardDriveName;
+    }
+
+    public void setHardDriveName(String hardDrivename) {
+        this.hardDriveName = hardDrivename;
     }
 }
