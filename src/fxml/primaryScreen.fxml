@@ -17,11 +17,11 @@
                      <image>
                         <Image url="@../res/images/succ.jpg" />
                      </image></ImageView>
-                  <ImageView fx:id="editFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#goToEditFolder" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="disableFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#goToDisableFolder" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/images/IMG_20160508_180126_01.png" />
                      </image></ImageView>
-                  <ImageView fx:id="removeFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="119.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="editFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="119.0" layoutY="10.0" onMouseClicked="#goToEditFolder" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/images/sooraj.png" />
                      </image></ImageView>

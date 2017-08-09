@@ -5,8 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.prefs.Preferences;
-
 public class Main extends Application {
     private static Main instance;
 
@@ -48,6 +46,7 @@ public class Main extends Application {
         startupController.saveUsers();
         primaryScreenController.saveTypes();
         primaryScreenController.saveFolders();
+        primaryScreenController.saveDisabledFolders();
         DataStore.saveHardDriveInfo(hardDriveName, rootFolder);
     }
 
@@ -94,6 +93,14 @@ public class Main extends Application {
     public void goToAddNewFolder() {
         try {
             popUpModalWindow("/fxml/addNewFolder.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goToDisableFolder() {
+        try {
+            popUpModalWindow("/fxml/disableFolder.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -192,7 +199,7 @@ public class Main extends Application {
         return hardDriveName;
     }
 
-    public void setHardDriveName(String hardDrivename) {
-        this.hardDriveName = hardDrivename;
+    public void setHardDriveName(String hardDriveName) {
+        this.hardDriveName = hardDriveName;
     }
 }

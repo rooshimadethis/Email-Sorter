@@ -14,6 +14,7 @@ public class DataStore implements Serializable{
     private static final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
     private static final String TYPE_FILE_DIR = System.getProperty("user.dir") + "\\data\\TypeData";
     private static final String FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\FolderData";
+    private static final String DISABLED_FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\DisabledFolderData";
     private static final String HD_FILE_DIR = System.getProperty("user.dir") + "\\data\\HardDriveData";
 
     public static void saveHardDriveInfo(String HDName, String folderPath){
@@ -127,6 +128,33 @@ public class DataStore implements Serializable{
     public static void saveFolders(ArrayList<Folder> folders){
         try {
             FileOutputStream outputStream = new FileOutputStream(FOLDER_FILE_DIR);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(folders);
+            outputStream.close();
+            objectOutputStream.close();
+        }catch (Exception e) {e.printStackTrace();}
+    }
+
+    public static ArrayList<Folder> loadDisabledFolders() {
+        ArrayList<Folder> folders = new ArrayList<Folder>();
+        try {
+            File folderFile = new File(DISABLED_FOLDER_FILE_DIR);
+            Boolean directoryMade = folderFile.getParentFile().mkdir();
+
+            FileInputStream fileInputStream = new FileInputStream(folderFile);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            folders = (ArrayList<Folder>)objectInputStream.readObject();
+
+        } catch (Exception e) {e.printStackTrace();}
+        if (folders != null) {
+            return folders;
+        } else return new ArrayList<Folder>();
+    }
+
+    public static void saveDisabledFolders(ArrayList<Folder> folders){
+        try {
+            FileOutputStream outputStream = new FileOutputStream(DISABLED_FOLDER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(folders);
             outputStream.close();

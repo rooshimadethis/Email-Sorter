@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class PrimaryScreenController {
     private ArrayList<Folder> folders;
+    private ArrayList<Folder> disabledFolders;
     private ArrayList<Type> types;
     private String currentDrivePath;
     private String currentFullPath;
@@ -27,6 +28,7 @@ public class PrimaryScreenController {
     public void initialize() {
         types = DataStore.loadTypes();
         folders = DataStore.loadFolders();
+        disabledFolders = DataStore.loadDisabledFolders();
 
         getHardDriveData();
 
@@ -88,8 +90,22 @@ public class PrimaryScreenController {
         }
     }
 
+    public void moveFolderToDisabled(String folderName) {
+        for(Folder folder : folders){
+            if (folder.getName().equals(folderName)){
+                disabledFolders.add(folder);
+                folders.remove(folder);
+                break;
+            }
+        }
+    }
+
     @FXML protected void goToAddNewFolder() {
         Main.getInstance().goToAddNewFolder();
+    }
+
+    @FXML protected void goToDisableFolder() {
+        Main.getInstance().goToDisableFolder();
     }
 
     @FXML protected void goToEditFolder() {
@@ -120,6 +136,9 @@ public class PrimaryScreenController {
     }
     public void saveFolders() {
         DataStore.saveFolders(folders);
+    }
+    public void saveDisabledFolders() {
+        DataStore.saveDisabledFolders(disabledFolders);
     }
 
     public ArrayList<Folder> getFolders() {
