@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -31,7 +32,7 @@ public class Main extends Application {
         try {
             stage = primaryStage;
             goToStartup();
-            primaryStage.show();
+            //primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +61,7 @@ public class Main extends Application {
 
     public void goToStartup() {
         try {
-            replaceSceneContent("/fxml/startup.fxml");
+            replaceSceneContent("/fxml/startup.fxml", 600, 400);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,7 +69,7 @@ public class Main extends Application {
 
     public void goToInitializeHardDrive() {
         try {
-            replaceSceneContent("/fxml/initializeHardDrive.fxml");
+            replaceSceneContent("/fxml/initializeHardDrive.fxml", 400, 150);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,7 +77,7 @@ public class Main extends Application {
 
     public void goToInitializePreferences() {
         try {
-            replaceSceneContent("/fxml/initializePreferences.fxml");
+            replaceSceneContent("/fxml/initializePreferences.fxml", 500, 300);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +85,7 @@ public class Main extends Application {
 
     public void goToPrimaryScreen() {
         try {
-            replaceSceneContent("/fxml/primaryScreen.fxml");
+            replaceSceneContent("/fxml/primaryScreen.fxml", 600, 500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,7 +139,7 @@ public class Main extends Application {
         }
     }
 
-    private Parent replaceSceneContent(String fxml) {
+    private Parent replaceSceneContent(String fxml, int width, int height) {
         try {
 
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
@@ -151,15 +152,19 @@ public class Main extends Application {
                 primaryScreenController = loader.getController();
             }
 
-            Scene scene = stage.getScene();
-            if (scene == null) {
-                scene = new Scene(page, 700, 450);
-                //scene.getStylesheets().add(Main.class.getResource("demo.css").toExternalForm());
+            //Scene scene = stage.getScene();
+            //if (scene == null) {
+                stage.close();
+                Scene scene = new Scene(page, width, height);
+                stage = new Stage();
                 stage.setScene(scene);
-            } else {
-                stage.getScene().setRoot(page);
-            }
-            stage.sizeToScene();
+            //} else {
+            //    stage.getScene().setRoot(page);
+            //}
+            //stage.sizeToScene();
+
+            stage.show();
+
             return page;
         } catch (Exception e) {
             e.printStackTrace();
@@ -168,6 +173,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
+        System.setProperty("prism.lcdtext", "false");
+        System.setProperty("prism.subpixeltext", "false");
+
         launch(args);
     }
 

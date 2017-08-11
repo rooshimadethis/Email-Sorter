@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InitializePreferencesController">
@@ -29,8 +30,12 @@
       <CheckBox fx:id="outCheckBox" mnemonicParsing="false" text="Save all outgoing emails" GridPane.rowIndex="3" />
       <CheckBox fx:id="separateCheckBox" mnemonicParsing="false" text="Save incoming and outgoing emails in separate folders " GridPane.rowIndex="4" />
       <ComboBox fx:id="saveDelayComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#savePreferences" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Label text="How old should email be before they are saved/deleted" GridPane.rowIndex="5" />
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <children>
+            <Button alignment="CENTER_RIGHT" layoutX="50.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#savePreferences" text="Next" />
+         </children>
+      </Pane>
       
    </children>
 

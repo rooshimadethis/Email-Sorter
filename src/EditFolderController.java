@@ -5,14 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 
@@ -20,6 +18,7 @@ public class EditFolderController {
 
     @FXML private ComboBox<String> folderDropdown;
     @FXML private ScrollPane folderListScrollPane;
+    @FXML private Button addSubfolderButton;
     private ArrayList<Folder> retrievedFolders;
 
     @FXML
@@ -33,13 +32,14 @@ public class EditFolderController {
 
 
         folderListScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        retrievedFolders = Main.getInstance().getPrimaryScreenController().getFolders();
+
         fillUpComboBox();
-        //listFoldersOnScrollPane();
+        addSubfolderButton.setVisible(false);
 
     }
 
     private void fillUpComboBox() {
+        retrievedFolders = Main.getInstance().getPrimaryScreenController().getFolders();
         ObservableList<String> folderNameList =
                 FXCollections.observableArrayList();
         for (Folder folder : retrievedFolders){
@@ -49,13 +49,31 @@ public class EditFolderController {
     }
 
     private Folder getChosenFolderFromDropdown() {
+        retrievedFolders = Main.getInstance().getPrimaryScreenController().getFolders();
         for (Folder folder : retrievedFolders){
             if (folderDropdown.getValue().equals(folder.getName())){
+                addSubfolderButton.setVisible(true);
                 return folder;
             }
         }
+        addSubfolderButton.setVisible(false);
         return null;
     }
+
+    @FXML protected void addNewSubfolder() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("New Subfolder");
+        dialog.setHeaderText("Add the name of the new Subfolder");
+        dialog.setContentText("Name:");
+
+// Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            getChosenFolderFromDropdown().addNewSubfolder(result.get());
+            listFoldersOnScrollPane();
+        }
+    }
+
 
     private void listFoldersOnScrollPane() {
         final Random rng = new Random();

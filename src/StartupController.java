@@ -40,6 +40,7 @@ public class StartupController {
     @FXML private Label warningText;
     @FXML private Text newAccountText;
     @FXML private ComboBox<String> accountDropdown;
+    @FXML private Label titleLabel;
 
     //TODO maybe keep in a few methods
 
@@ -51,6 +52,7 @@ public class StartupController {
         dataStore = new DataStore();
         users = DataStore.loadUsers();
         updateDropdownList();
+
 
     }
 
@@ -67,12 +69,12 @@ public class StartupController {
         accountDropdown.setItems(accountDropdownAccounts);
     }
 
-    @FXML protected void handleLogin(ActionEvent event){
+    @FXML protected void handleLogin(){
         String selectedItem = accountDropdown.getSelectionModel().getSelectedItem();
 
         //TODO say nothing was selected in GUI
         if (selectedItem == null) {
-            System.out.println("nothing was selected");
+            System.out.println("Nothing was selected");
             return;
         }
 
@@ -90,7 +92,7 @@ public class StartupController {
 
     //TODO change Thread to Task
     @FXML protected void makeNewAccount() {
-        if (!newAccountThreadRunning) {
+        //if (!newAccountThreadRunning) {
 
             warningText.setVisible(true);
 
@@ -129,7 +131,7 @@ public class StartupController {
 
                     });
             newAccountThread.start();
-        }
+        //}
     }
 
     private String generateNewUserID() {

@@ -6,8 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 
@@ -16,6 +18,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PrimaryScreenController {
     private ArrayList<Folder> folders;
@@ -23,6 +26,7 @@ public class PrimaryScreenController {
     private ArrayList<Type> types;
     private String currentDrivePath;
     private String currentFullPath;
+    @FXML private ScrollPane folderScrollPane;
 
     @FXML
     public void initialize() {
@@ -31,6 +35,8 @@ public class PrimaryScreenController {
         disabledFolders = DataStore.loadDisabledFolders();
 
         getHardDriveData();
+
+        listFoldersOnScrollPane();
 
         System.out.println();
     }
@@ -98,6 +104,43 @@ public class PrimaryScreenController {
                 break;
             }
         }
+    }
+
+    private void listFoldersOnScrollPane() {
+        final Random rng = new Random();
+        VBox content = new VBox(5);
+        ScrollPane scroller = folderScrollPane;
+
+        for (Folder folder : folders) {
+            AnchorPane anchorPane = new AnchorPane();
+            anchorPane.setOnMouseClicked(e -> {
+                String folderName = ((Label)anchorPane.getChildren().get(0)).getText();
+                String path = currentFullPath + "/" + folderName;
+                try {
+                    Runtime.getRuntime().exec("explorer.exe /select," + path);
+                } catch (Exception ex) {ex.printStackTrace();}
+            });
+            String style = String.format("-fx-background: rgb(%d, %d, %d);" +
+                            "-fx-background-color: -fx-background;",
+                    rng.nextInt(128)+128,
+                    rng.nextInt(128)+128,
+                    rng.nextInt(128)+128);
+            anchorPane.setStyle(style);
+            Label label = new Label(folder.getName());
+            AnchorPane.setLeftAnchor(label, 5.0);
+            AnchorPane.setTopAnchor(label, 5.0);
+
+            ImageView trash = new ImageView("/res/images/trash.png");
+            trash.setPreserveRatio(true);
+            AnchorPane.setRightAnchor(trash, 5.0);
+            AnchorPane.setTopAnchor(trash, 5.0);
+            AnchorPane.setBottomAnchor(trash, 5.0);
+            anchorPane.setPrefWidth(590);
+            anchorPane.getChildren().add(label);
+            anchorPane.getChildren().add(trash);
+            content.getChildren().add(anchorPane);
+        }
+        scroller.setContent(content);
     }
 
     @FXML protected void goToAddNewFolder() {

@@ -82,6 +82,7 @@ public class AddNewFolderController {
             }
             if (!exists) {
                 Main.getInstance().getPrimaryScreenController().addNewFolder(name, type, keywords);
+
             }
         }
     }

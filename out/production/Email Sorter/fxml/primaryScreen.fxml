@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,34 +8,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimaryScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimaryScreenController">
    <children>
       <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="addFolderImageView" fitHeight="85.0" fitWidth="109.0" onMouseClicked="#goToAddNewFolder" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../res/images/succ.jpg" />
-                     </image></ImageView>
+                        <Image url="@../res/images/add.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></ImageView>
                   <ImageView fx:id="disableFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#goToDisableFolder" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../res/images/IMG_20160508_180126_01.png" />
-                     </image></ImageView>
+                        <Image url="@../res/images/minus.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></ImageView>
                   <ImageView fx:id="editFolderImageView" fitHeight="85.0" fitWidth="109.0" layoutX="119.0" layoutY="10.0" onMouseClicked="#goToEditFolder" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../res/images/sooraj.png" />
-                     </image></ImageView>
+                        <Image url="@../res/images/pencil-edit-button.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></ImageView>
                   <ImageView fx:id="preferencesImageView" fitHeight="85.0" fitWidth="109.0" layoutX="228.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../res/images/IMG_20160519_101805_01.jpg" />
-                     </image></ImageView>
+                        <Image url="@../res/images/wrench.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></ImageView>
                </children></HBox>
-            <ScrollPane fitToWidth="true" prefHeight="305.0" prefWidth="600.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="200.0" />
-              </content>
-            </ScrollPane>
+            <ScrollPane fx:id="folderScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
          </children></VBox>
    </children>
 </AnchorPane>

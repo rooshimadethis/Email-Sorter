@@ -12,7 +12,7 @@
          <children>
             <Label contentDisplay="CENTER" text="Disable: (This will stop adding emails to this folder)" textAlignment="CENTER" VBox.vgrow="NEVER">
                <font>
-                  <Font size="22.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
             <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />

@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -16,6 +17,7 @@ import java.nio.file.Paths;
 public class InitializeHardDriveController {
 
     @FXML private Label warningText;
+    @FXML private TextField directoryField;
 
     private File emailDirectory;
 
@@ -33,6 +35,7 @@ public class InitializeHardDriveController {
         directoryChooser.setTitle("Select your root email directory (create a folder if you want)");
         //directoryChooser.setInitialDirectory(new File(System.getProperty("user.home") + "Documents"));
         emailDirectory = directoryChooser.showDialog(Main.getInstance().getStage().getOwner());
+        directoryField.setText(emailDirectory.getAbsolutePath());
 
         Path path = Paths.get(emailDirectory.getAbsolutePath());
         Path drivePath = path.getRoot();
