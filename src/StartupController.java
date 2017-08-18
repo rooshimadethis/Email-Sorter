@@ -52,7 +52,7 @@ public class StartupController {
         dataStore = new DataStore();
         users = DataStore.loadUsers();
         updateDropdownList();
-
+        titleLabel.setStyle("-fx-font-smoothing-type: gray");
 
     }
 

@@ -28,7 +28,24 @@ public class InitializePreferencesController {
         saveDelays.add(2, "2 Weeks");
         saveDelays.add(3, "1 Month");
         saveDelayComboBox.setItems(saveDelays);
+        separateCheckBox.setSelected(false);
 
+        inCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (inCheckBox.isSelected() && outCheckBox.isSelected()){
+                separateCheckBox.setDisable(false);
+            } else {
+                separateCheckBox.setSelected(false);
+                separateCheckBox.setDisable(true);
+            }
+        });
+        outCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (inCheckBox.isSelected() && outCheckBox.isSelected()){
+                separateCheckBox.setDisable(false);
+            } else {
+                separateCheckBox.setSelected(false);
+                separateCheckBox.setDisable(true);
+            }
+        });
     }
 
     @FXML protected void savePreferences() {

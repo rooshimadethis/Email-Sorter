@@ -174,8 +174,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        System.setProperty("prism.lcdtext", "false");
-        System.setProperty("prism.subpixeltext", "false");
+        //System.setProperty("prism.lcdtext", "false");
+        //System.setProperty("prism.subpixeltext", "false");
 
         launch(args);
     }
