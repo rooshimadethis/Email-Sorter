@@ -9,6 +9,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.GmailScopes;
+import com.google.api.services.gmail.model.Message;
 
 import java.io.*;
 import java.util.Arrays;
@@ -22,12 +24,14 @@ public class Authorizer {
     private static FileDataStoreFactory storeFactory;
     private static HttpTransport httpTransport;
     private static JsonFactory jsonFactory;
-    private static final List<String> SCOPES = Arrays.asList("https://mail.google.com/", "https://www.googleapis.com/auth/gmail.compose",
-            "https://www.googleapis.com/auth/gmail.labels", "https://www.googleapis.com/auth/gmail.insert", "https://www.googleapis.com/auth/gmail.metadata",
-            "https://www.googleapis.com/auth/gmail.modify", "https://www.googleapis.com/auth/gmail.readonly", "https://www.googleapis.com/auth/gmail.send");
+    private static final List<String> SCOPES = Arrays.asList(
+            "https://www.googleapis.com/auth/gmail.readonly", "https://www.googleapis.com/auth/gmail.compose", "https://www.googleapis.com/auth/gmail.send", "https://www.googleapis.com/auth/gmail.insert",
+            "https://www.googleapis.com/auth/gmail.labels", "https://www.googleapis.com/auth/gmail.modify", "https://www.googleapis.com/auth/gmail.settings.basic",
+            "https://www.googleapis.com/auth/gmail.settings.sharing", "https://mail.google.com/");
     private static GoogleClientSecrets clientSecrets;
     private GoogleAuthorizationCodeFlow flow;
     private Gmail gmailService;
+    private Credential currentUserCredential;
 
 
     public Authorizer() {
@@ -60,7 +64,7 @@ public class Authorizer {
             credential = AuthCodeInstalledApp.authorize(userID);
 
         } catch (Exception e){e.printStackTrace();}
-
+        currentUserCredential = credential;
         return credential;
     }
 
@@ -69,4 +73,8 @@ public class Authorizer {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
     }
+
+    /*public Message getMessage() {
+
+    }*/
 }

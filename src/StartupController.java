@@ -1,6 +1,8 @@
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.ListMessagesResponse;
+import com.google.api.services.gmail.model.Message;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +24,8 @@ import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -83,7 +87,7 @@ public class StartupController {
                 currentUserIndex = i;
                 if (!users.get(i).hasDoneInitialSetup()){
                     Main.getInstance().setCurrentUser(users.get((i)));
-                    Main.getInstance().goToInitializeHardDrive();
+                    goToInitializeHardDrive();
 
                 }
             }
@@ -98,44 +102,36 @@ public class StartupController {
 
 
             Thread newAccountThread = new Thread(
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            newAccountThreadRunning = true;
+                    () -> {
+                        newAccountThreadRunning = true;
 
-                            String newUserID = generateNewUserID();
-                            currentUserCredentials = mainAuthorizer.authorizeUser(newUserID);
+                        String newUserID = generateNewUserID();
+                        currentUserCredentials = mainAuthorizer.authorizeUser(newUserID);
 
-                            if (currentUserCredentials == null) {
-                                System.out.println("New user not created.");
-                                newAccountThreadRunning = false;
-                                return;
-                            }
-                            String newEmailAddress = getNewUserEmailAddress();
-
-
-                            User newUser = new User(newUserID, newEmailAddress);
-                            users.add(newUser);
-
-                            DataStore.createNewPreferences(newUserID);
-
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    warningText.setVisible(false);
-                                }
-                            });
+                        if (currentUserCredentials == null) {
+                            System.out.println("New user not created.");
                             newAccountThreadRunning = false;
-                            updateDropdownList();
+                            return;
                         }
+                        String newEmailAddress = getNewUserEmailAddress();
 
+
+                        User newUser = new User(newUserID, newEmailAddress);
+                        users.add(newUser);
+
+                        DataStore.createNewPreferences(newUserID);
+
+                        Platform.runLater(() -> warningText.setVisible(false));
+                        newAccountThreadRunning = false;
+                        updateDropdownList();
                     });
             newAccountThread.start();
+        System.out.println();
         //}
     }
 
     private String generateNewUserID() {
-        int lastNumber = 0;
+        /*int lastNumber = 0;
         for (User user : users) {
             String num = user.getUserID().replace("user", "");
             int number = Integer.parseInt(num);
@@ -144,6 +140,9 @@ public class StartupController {
             }
         }
         return "user" + (lastNumber+1);
+        */
+        Random random = new Random();
+        return ("user" + random.nextInt(100000));
     }
 
     private String getNewUserEmailAddress(){
@@ -156,5 +155,11 @@ public class StartupController {
         } catch (Exception e){e.printStackTrace();}
 
         return emailAddress;
+    }
+
+    private void goToInitializeHardDrive() {
+
+        Main.getInstance().setAuthorizer(mainAuthorizer);
+        Main.getInstance().goToInitializeHardDrive();
     }
 }

@@ -1,5 +1,12 @@
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.ListMessagesResponse;
+import com.google.api.services.gmail.model.Message;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -13,6 +20,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.prefs.Preferences;
 
@@ -25,9 +33,12 @@ public class PrimaryScreenController {
     private boolean separateInOut;
 
     @FXML private ScrollPane folderScrollPane;
+    @FXML private ProgressIndicator progressSpinner;
+    @FXML private Button processEmailsButton;
 
     @FXML
     public void initialize() {
+        progressSpinner.setVisible(false);
         types = DataStore.loadTypes();
         folders = DataStore.loadFolders();
         disabledFolders = DataStore.loadDisabledFolders();
@@ -37,6 +48,18 @@ public class PrimaryScreenController {
         listFoldersOnScrollPane();
 
         loadPreferences();
+    }
+
+    @FXML protected void processEmails() {
+        progressSpinner.setVisible(true);
+
+            Thread emails = new Thread(() -> {
+                GmailHandler gmailHandler = new GmailHandler();
+                gmailHandler.processEmailsForCurrentFolders();
+                Platform.runLater(() -> progressSpinner.setVisible(false));
+            });
+            emails.start();
+
     }
 
     private void getHardDriveData() {
@@ -127,7 +150,7 @@ public class PrimaryScreenController {
                     rng.nextInt(128)+128);
             anchorPane.setStyle(style);
             Label nameLabel = new Label("Name: " + folder.getName());
-            Label typeLabel = new Label("Type: " + folder.getType().getName());
+            Label typeLabel = new Label("Type: " + folder.getTypeName());
             nameLabel.setFont(new Font("Roboto", 20));
             typeLabel.setFont(new Font("Roboto", 20));
 

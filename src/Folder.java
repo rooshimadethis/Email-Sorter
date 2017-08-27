@@ -10,6 +10,7 @@ public class Folder implements Serializable{
     private String path;
     private boolean custom;
     private boolean separateInOut;
+    private Subfolder miscSubfolder;
 
     public Folder(String name, Type type, ArrayList<String> keywords, String path) {
         this.name = name;
@@ -17,16 +18,24 @@ public class Folder implements Serializable{
         this.type = type;
         this.path = path;
         subfolders = new ArrayList<Subfolder>();
-        if (subfolders.size() != type.getSubcategories().size()){
-            custom = true;
+
+        if (type != null) {
+            if (subfolders.size() != type.getSubcategories().size()) {
+                custom = true;
+            }
         }
         separateInOut = Main.getInstance().getPrimaryScreenController().getSeparateInOut();
         if (separateInOut){
             createInOut();
         }
         for (String subfolder : keywords){
-            addNewSubfolder(subfolder);
+            if (!subfolder.equals("")) {
+                addNewSubfolder(subfolder);
+            }
         }
+        miscSubfolder = new Subfolder("Misc", separateInOut);
+        miscSubfolder.setRoot(path);
+        subfolders.add(miscSubfolder);
 
     }
 
@@ -56,7 +65,23 @@ public class Folder implements Serializable{
         return type;
     }
 
+    public String getTypeName() {
+        if (type != null) {
+            return type.getName();
+        } else {
+            return "Custom";
+        }
+    }
+
     public ArrayList<Subfolder> getSubfolders() {
         return subfolders;
+    }
+
+    public Subfolder getMiscFolder() {
+        return miscSubfolder;
+    }
+
+    public boolean isSeparateInOut() {
+        return separateInOut;
     }
 }

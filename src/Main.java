@@ -1,3 +1,4 @@
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,6 +17,7 @@ public class Main extends Application {
     private User currentUser;
     private String hardDriveName;
     private String rootFolder;
+    private Authorizer authorizer;
 
 
     public Main() {
@@ -210,5 +212,13 @@ public class Main extends Application {
 
     public void setHardDriveName(String hardDriveName) {
         this.hardDriveName = hardDriveName;
+    }
+
+    public Authorizer getAuthorizer() {
+        return authorizer;
+    }
+
+    public void setAuthorizer(Authorizer authorizer) {
+        this.authorizer = authorizer;
     }
 }

@@ -30,10 +30,10 @@ public class Subfolder implements Serializable{
         }
     }
 
-    public String getInPath() {
+    public String getReceivedPath() {
         return (root + "/Received/" + name);
     }
-    public String getOutPath() {
+    public String getSentPath() {
         return (root + "/Sent/" + name);
     }
     public String getPath() {

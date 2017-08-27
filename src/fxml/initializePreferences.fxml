@@ -26,9 +26,9 @@
    <children>
       <CheckBox fx:id="deleteCheckBox" mnemonicParsing="false" text="Delete emails after saving to hard drive" />
       <CheckBox fx:id="readCheckBox" mnemonicParsing="false" text="Only save (and possibly delete) read emails" GridPane.rowIndex="1" />
-      <CheckBox fx:id="inCheckBox" mnemonicParsing="false" text="Save all incoming emails" GridPane.rowIndex="2" />
-      <CheckBox fx:id="outCheckBox" mnemonicParsing="false" text="Save all outgoing emails" GridPane.rowIndex="3" />
-      <CheckBox fx:id="separateCheckBox" mnemonicParsing="false" text="Save incoming and outgoing emails in separate folders " GridPane.rowIndex="4" />
+      <CheckBox fx:id="inCheckBox" mnemonicParsing="false" text="Save all Received emails" GridPane.rowIndex="2" />
+      <CheckBox fx:id="outCheckBox" mnemonicParsing="false" text="Save all Sent emails" GridPane.rowIndex="3" />
+      <CheckBox fx:id="separateCheckBox" mnemonicParsing="false" text="Save Received and Sent emails in separate folders " GridPane.rowIndex="4" />
       <ComboBox fx:id="saveDelayComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Label text="How old should email be before they are saved/deleted" GridPane.rowIndex="5" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">

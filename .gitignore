@@ -1,3 +1,10 @@
 client_id.json
 .store/email_sorter/StoredCredential
 data/UserData
+data/FolderData
+data/DisabledFolderData
+out/production/Email Sorter/Authorizer.class
+out/production/Email Sorter/Folder.class
+out/production/Email Sorter/Main.class
+out/production/Email Sorter/Subfolder.class
+.idea/workspace.xml

@@ -28,7 +28,7 @@ public class InitializePreferencesController {
         saveDelays.add(2, "2 Weeks");
         saveDelays.add(3, "1 Month");
         saveDelayComboBox.setItems(saveDelays);
-        separateCheckBox.setSelected(false);
+        separateCheckBox.setDisable(true);
 
         inCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (inCheckBox.isSelected() && outCheckBox.isSelected()){

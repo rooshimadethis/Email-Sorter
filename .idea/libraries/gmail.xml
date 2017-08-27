@@ -5,11 +5,14 @@
       <root url="file://$PROJECT_DIR$/APIs/gmail" />
       <root url="file://$PROJECT_DIR$/APIs/gmail/libs" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/APIs/gmail/google-api-services-gmail-v1-rev68-1.22.0-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/APIs/gmail" />
       <root url="file://$PROJECT_DIR$/APIs/gmail" />
       <root url="file://$PROJECT_DIR$/APIs/gmail/libs" />
+      <root url="file://$PROJECT_DIR$/APIs/gmail/libs-sources" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" />
@@ -17,5 +20,6 @@
     <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail/libs" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/APIs/gmail/libs-sources" recursive="false" type="SOURCES" />
   </library>
 </component>
