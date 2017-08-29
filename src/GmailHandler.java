@@ -6,6 +6,7 @@ import com.google.api.client.util.Data;
 import com.google.api.client.util.StringUtils;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.*;
+import org.jsoup.Jsoup;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -233,6 +234,11 @@ public class GmailHandler {
             MessagePart msgpart = message.getPayload();
             List<MessagePart> bodyParts = msgpart.getParts();
             for(MessagePart part : bodyParts){
+                if (part.getMimeType().equals("text/plain")){
+                    MailBody += part.getBody().getData();
+                } else if (part.getMimeType().equals("text/html")){
+                    Jsoup
+                }
                 MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
                 if(MailBody == null){
                     MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getParts().get(1).getBody().getData().getBytes()));
