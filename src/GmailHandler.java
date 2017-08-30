@@ -8,6 +8,7 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.*;
 import org.jsoup.Jsoup;
 
+import javax.mail.Multipart;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -235,11 +236,23 @@ public class GmailHandler {
             List<MessagePart> bodyParts = msgpart.getParts();
             for(MessagePart part : bodyParts){
                 if (part.getMimeType().equals("text/plain")){
-                    MailBody += part.getBody().getData();
+                    MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
                 } else if (part.getMimeType().equals("text/html")){
-                    Jsoup
+                    MailBody = Jsoup.parse(part.getBody().getData(), null, null).body().text();
+                    System.out.println();
+                } else if (part.getMimeType().equals("multipart/alternative")){
+                    List<MessagePart> messageParts = part.getParts();
+                for (int i = 0; i < messageParts.size(); i++) {
+                    MessagePart part2 = messageParts.get(i);
+                    if (part2.getMimeType().equals("text/plain")) {
+                        MailBody += StringUtils.newStringUtf8(Base64.decodeBase64(part2.getBody().getData().getBytes()));
+                    } else if (part2.getMimeType().equals("text/html")){
+                        MailBody += Jsoup.parse(part.getBody().getData(), null, null).body().text();
+                        System.out.println();
+                    }
                 }
-                MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
+                }
+
                 if(MailBody == null){
                     MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getParts().get(1).getBody().getData().getBytes()));
                 }
