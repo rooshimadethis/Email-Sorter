@@ -4,12 +4,14 @@ public class User implements Serializable{
 
     private String emailAddress;
     private String userID;
+    private String userPath;
     private boolean doneInitialSetup;
 
  public User(String userID, String emailAddress) {
      this.emailAddress = emailAddress;
      this.userID = userID;
-     doneInitialSetup = false;
+     //TODO doneInitialSetup = false;
+     userPath = emailAddress;
  }
 
     public String getEmailAddress() {
@@ -22,6 +24,10 @@ public class User implements Serializable{
 
     public boolean hasDoneInitialSetup() {
         return doneInitialSetup;
+    }
+
+    public String getUserPath() {
+        return userPath;
     }
 
     public void finishedInitialSetup() {

@@ -30,6 +30,7 @@ public class PrimaryScreenController {
     private ArrayList<Type> types;
     private String currentDrivePath;
     private String currentFullPath;
+    private String currentUserPath;
     private boolean separateInOut;
 
     @FXML private ScrollPane folderScrollPane;
@@ -63,6 +64,7 @@ public class PrimaryScreenController {
     }
 
     private void getHardDriveData() {
+        User currentUser = Main.getInstance().getCurrentUser();
         String loadedHardDriveName = Main.getInstance().getHardDriveName();
         String loadedFolderPath = Main.getInstance().getRootFolder();
 
@@ -110,10 +112,15 @@ public class PrimaryScreenController {
 
             currentDrivePath =  newDirectory.getAbsolutePath().substring(0,2);
             currentFullPath = newDirectory.getAbsolutePath();
-            
+            currentUserPath = currentFullPath + "/" + currentUser.getUserPath();
+            File userPath = new File(currentUserPath);
+            userPath.mkdirs();
         } else {
             currentDrivePath = expectedRoot.getAbsolutePath().substring(0,2);
             currentFullPath = expectedRoot.getAbsolutePath();
+            currentUserPath = currentFullPath + "/" + currentUser.getUserPath();
+            File userPath = new File(currentUserPath);
+            userPath.mkdirs();
         }
     }
 
@@ -136,7 +143,7 @@ public class PrimaryScreenController {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setOnMouseClicked(e -> {
                 String folderName = ((Label)anchorPane.getChildren().get(0)).getText().replace("Name: ","");
-                String path = currentFullPath + "/" + folderName;
+                String path = currentUserPath + "/" + folderName;
                 try {
                     File file = new File (path);
                     Desktop desktop = Desktop.getDesktop();
@@ -201,7 +208,7 @@ public class PrimaryScreenController {
                 newType = iteratingType;
             }
         }
-        String path = currentFullPath + "/" + name;
+        String path = currentUserPath + "/" + name;
         Folder newFolder = new Folder(name, newType, keywords, path);
 
         File newFile = new File(path);
