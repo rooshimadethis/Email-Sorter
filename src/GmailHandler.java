@@ -129,7 +129,7 @@ public class GmailHandler {
                     sent = true;
                     String to = outlookMessage.getReplyTo().toString().replace("<", "").replace(">", "").replace("\"", "");
                     mailName += to + " ";
-                } else if (outlookMessage.getReplyTo().contains(userEmail)){
+                } else /*if (outlookMessage.getReplyTo().contains(userEmail))*/{
                     received = true;
                     mailName += from + " ";
                 }

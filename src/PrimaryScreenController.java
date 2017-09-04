@@ -32,6 +32,7 @@ public class PrimaryScreenController {
     private String currentFullPath;
     private String currentUserPath;
     private boolean separateInOut;
+    private User currentUser;
 
     @FXML private ScrollPane folderScrollPane;
     @FXML private ProgressIndicator progressSpinner;
@@ -39,10 +40,11 @@ public class PrimaryScreenController {
 
     @FXML
     public void initialize() {
+        currentUser = Main.getInstance().getCurrentUser();
         progressSpinner.setVisible(false);
-        types = DataStore.loadTypes();
-        folders = DataStore.loadFolders();
-        disabledFolders = DataStore.loadDisabledFolders();
+        types = DataStore.loadTypes(currentUser);
+        folders = DataStore.loadFolders(currentUser);
+        disabledFolders = DataStore.loadDisabledFolders(currentUser);
 
         getHardDriveData();
 
@@ -219,13 +221,13 @@ public class PrimaryScreenController {
     }
 
     public void saveTypes() {
-        DataStore.saveTypes(types);
+        DataStore.saveTypes(types, currentUser);
     }
     public void saveFolders() {
-        DataStore.saveFolders(folders);
+        DataStore.saveFolders(folders, currentUser);
     }
     public void saveDisabledFolders() {
-        DataStore.saveDisabledFolders(disabledFolders);
+        DataStore.saveDisabledFolders(disabledFolders, currentUser);
     }
 
     public ArrayList<Folder> getFolders() {

@@ -11,7 +11,7 @@ public class User implements Serializable{
      this.emailAddress = emailAddress;
      this.userID = userID;
      //TODO doneInitialSetup = false;
-     userPath = emailAddress;
+     userPath = "\\" + emailAddress;
  }
 
     public String getEmailAddress() {

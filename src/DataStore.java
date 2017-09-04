@@ -5,22 +5,24 @@ import java.util.prefs.Preferences;
 
 public class DataStore implements Serializable{
 
+    private static final String BASE_DIR = System.getProperty("user.dir") + "\\data";
     private static final String DELETE_PREFERENCE_KEY = "delete_key";
     private static final String READ_PREFERENCE_KEY = "read_key";
     private static final String INCOMING_PREFERENCE_KEY = "incoming_key";
     private static final String OUTGOING_PREFERENCE_KEY = "outgoing_key";
     private static final String SEPARATE_PREFERENCE_KEY = "separate_key";
     private static final String SAVE_DELAY_PREFERENCE_KEY = "save_delay_key";
-    private static final String USER_FILE_DIR = System.getProperty("user.dir") + "\\data\\UserData";
-    private static final String TYPE_FILE_DIR = System.getProperty("user.dir") + "\\data\\TypeData";
-    private static final String FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\FolderData";
-    private static final String DISABLED_FOLDER_FILE_DIR = System.getProperty("user.dir") + "\\data\\DisabledFolderData";
-    private static final String HD_FILE_DIR = System.getProperty("user.dir") + "\\data\\HardDriveData";
+    private static final String USER_FILE_DIR = "\\UserData";
+    private static final String TYPE_FILE_DIR = "TypeData";
+    private static final String FOLDER_FILE_DIR = "FolderData";
+    private static final String DISABLED_FOLDER_FILE_DIR = "DisabledFolderData";
+    private static final String HD_FILE_DIR = "HardDriveData";
+    //private String currentUserPath;
 
     public static void saveHardDriveInfo(String HDName, String folderPath){
         String[] HDData = {HDName, folderPath};
         try {
-            FileOutputStream outputStream = new FileOutputStream(HD_FILE_DIR);
+            FileOutputStream outputStream = new FileOutputStream(BASE_DIR + "\\" + HD_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(HDData);
             outputStream.close();
@@ -64,7 +66,7 @@ public class DataStore implements Serializable{
 
     public static void saveUsers(ArrayList<User> users){
         try {
-            FileOutputStream outputStream = new FileOutputStream(USER_FILE_DIR);
+            FileOutputStream outputStream = new FileOutputStream(BASE_DIR + "\\" + USER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(users);
             outputStream.close();
@@ -72,10 +74,10 @@ public class DataStore implements Serializable{
         }catch (Exception e) {e.printStackTrace();}
     }
 
-    public static ArrayList<Type> loadTypes() {
+    public static ArrayList<Type> loadTypes(User currentUser) {
         ArrayList<Type> types = new ArrayList<Type>();
         try {
-            File typeFile = new File(TYPE_FILE_DIR);
+            File typeFile = new File(BASE_DIR + currentUser.getUserPath() + "\\" + TYPE_FILE_DIR);
             Boolean fileExists = typeFile.exists();
             Boolean directoryMade = typeFile.getParentFile().mkdir();
 
@@ -98,9 +100,9 @@ public class DataStore implements Serializable{
         } else return new ArrayList<Type>();
     }
 
-    public static void saveTypes(ArrayList<Type> types){
+    public static void saveTypes(ArrayList<Type> types, User currentUser){
         try {
-            FileOutputStream outputStream = new FileOutputStream(TYPE_FILE_DIR);
+            FileOutputStream outputStream = new FileOutputStream(BASE_DIR + currentUser.getUserPath() + "\\" + TYPE_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(types);
             outputStream.close();
@@ -108,10 +110,10 @@ public class DataStore implements Serializable{
         }catch (Exception e) {e.printStackTrace();}
     }
 
-    public static ArrayList<Folder> loadFolders() {
+    public static ArrayList<Folder> loadFolders(User currentUser) {
         ArrayList<Folder> folders = new ArrayList<Folder>();
         try {
-            File folderFile = new File(FOLDER_FILE_DIR);
+            File folderFile = new File(BASE_DIR + currentUser.getUserPath() + "\\" + FOLDER_FILE_DIR);
             Boolean directoryMade = folderFile.getParentFile().mkdir();
 
             FileInputStream fileInputStream = new FileInputStream(folderFile);
@@ -125,9 +127,9 @@ public class DataStore implements Serializable{
         } else return new ArrayList<Folder>();
     }
 
-    public static void saveFolders(ArrayList<Folder> folders){
+    public static void saveFolders(ArrayList<Folder> folders, User currentUser){
         try {
-            FileOutputStream outputStream = new FileOutputStream(FOLDER_FILE_DIR);
+            FileOutputStream outputStream = new FileOutputStream(BASE_DIR + currentUser.getUserPath() + "\\" + FOLDER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(folders);
             outputStream.close();
@@ -135,10 +137,10 @@ public class DataStore implements Serializable{
         }catch (Exception e) {e.printStackTrace();}
     }
 
-    public static ArrayList<Folder> loadDisabledFolders() {
+    public static ArrayList<Folder> loadDisabledFolders(User currentUser) {
         ArrayList<Folder> folders = new ArrayList<Folder>();
         try {
-            File folderFile = new File(DISABLED_FOLDER_FILE_DIR);
+            File folderFile = new File(BASE_DIR + currentUser.getUserPath() + "\\" + DISABLED_FOLDER_FILE_DIR);
             Boolean directoryMade = folderFile.getParentFile().mkdir();
 
             FileInputStream fileInputStream = new FileInputStream(folderFile);
@@ -152,9 +154,9 @@ public class DataStore implements Serializable{
         } else return new ArrayList<Folder>();
     }
 
-    public static void saveDisabledFolders(ArrayList<Folder> folders){
+    public static void saveDisabledFolders(ArrayList<Folder> folders, User currentUser){
         try {
-            FileOutputStream outputStream = new FileOutputStream(DISABLED_FOLDER_FILE_DIR);
+            FileOutputStream outputStream = new FileOutputStream(BASE_DIR + currentUser.getUserPath() + "\\" + DISABLED_FOLDER_FILE_DIR);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(folders);
             outputStream.close();
