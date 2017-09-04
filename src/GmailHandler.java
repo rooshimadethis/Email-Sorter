@@ -229,16 +229,14 @@ public class GmailHandler {
 
     private String getMessageBody(Message message) {
         String MailBody = "";
-        String MailBodyDecoded = "";
-//        message = Gmailservice.users().messages().get(USER, "14d4d4bbd160b7a9").setFormat("raw").execute();
         try{
             MessagePart msgpart = message.getPayload();
             List<MessagePart> bodyParts = msgpart.getParts();
             for(MessagePart part : bodyParts){
                 if (part.getMimeType().equals("text/plain")){
-                    MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
+                    MailBody += StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
                 } else if (part.getMimeType().equals("text/html")){
-                    MailBody = Jsoup.parse(part.getBody().getData(), null, null).body().text();
+                    MailBody += Jsoup.parse(StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()))).body().text();
                     System.out.println();
                 } else if (part.getMimeType().equals("multipart/alternative")){
                     List<MessagePart> messageParts = part.getParts();
@@ -247,17 +245,16 @@ public class GmailHandler {
                     if (part2.getMimeType().equals("text/plain")) {
                         MailBody += StringUtils.newStringUtf8(Base64.decodeBase64(part2.getBody().getData().getBytes()));
                     } else if (part2.getMimeType().equals("text/html")){
-                        MailBody += Jsoup.parse(part.getBody().getData(), null, null).body().text();
+                        MailBody += Jsoup.parse(StringUtils.newStringUtf8(Base64.decodeBase64(part2.getBody().getData().getBytes()))).body().text();
                         System.out.println();
                     }
                 }
                 }
 
-                if(MailBody == null){
+                if(MailBody.equals("")){
                     MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getParts().get(1).getBody().getData().getBytes()));
                 }
-//                MailBodyDecoded = StringUtils.newStringUtf8(Base64.decodeBase64(MailBody));
-//				System.out.println(MailBody);
+
                 break;
             }
             return MailBody;
