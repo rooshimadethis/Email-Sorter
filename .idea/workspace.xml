@@ -135,14 +135,14 @@
       <file leaf-file-name="GmailHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GmailHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="229" column="51" lean-forward="false" selection-start-line="229" selection-start-column="51" selection-end-line="229" selection-end-column="51" />
+            <state relative-caret-position="409">
+              <caret line="138" column="50" lean-forward="true" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#getMessageSubject#0;class#GmailHandler#0" expanded="false" />
                 <element signature="method#getMessageFrom#0;class#GmailHandler#0" expanded="false" />
                 <element signature="method#getMessageTo#0;class#GmailHandler#0" expanded="false" />
                 <element signature="method#getMessageTime#0;class#GmailHandler#0" expanded="false" />
-                <element signature="method#getMessageBody#0;class#GmailHandler#0" expanded="false" />
                 <element signature="method#getMessageAttachments#0;class#GmailHandler#0" expanded="false" />
               </folding>
             </state>
@@ -339,7 +339,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/APIs/jsoup-1.10.3.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/APIs/unbescape-1.1.5.RELEASE/dist" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -522,7 +522,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -569,23 +569,11 @@
           <properties />
           <option name="timeStamp" value="162" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GmailHandler.java</url>
-          <line>230</line>
-          <properties />
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GmailHandler.java</url>
-          <line>241</line>
-          <properties />
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="172" />
+      <option name="time" value="173" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -927,14 +915,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GmailHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="229" column="51" lean-forward="false" selection-start-line="229" selection-start-column="51" selection-end-line="229" selection-end-column="51" />
+        <state relative-caret-position="409">
+          <caret line="138" column="50" lean-forward="true" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#getMessageSubject#0;class#GmailHandler#0" expanded="false" />
             <element signature="method#getMessageFrom#0;class#GmailHandler#0" expanded="false" />
             <element signature="method#getMessageTo#0;class#GmailHandler#0" expanded="false" />
             <element signature="method#getMessageTime#0;class#GmailHandler#0" expanded="false" />
-            <element signature="method#getMessageBody#0;class#GmailHandler#0" expanded="false" />
             <element signature="method#getMessageAttachments#0;class#GmailHandler#0" expanded="false" />
           </folding>
         </state>
@@ -1007,7 +995,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jsoup-1.10.3</last-edited>
+          <last-edited>dist</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

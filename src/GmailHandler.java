@@ -7,6 +7,7 @@ import com.google.api.client.util.StringUtils;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.*;
 import org.jsoup.Jsoup;
+import org.unbescape.html.HtmlEscape;
 
 import javax.mail.Multipart;
 import java.io.ByteArrayInputStream;
@@ -134,8 +135,16 @@ public class GmailHandler {
                 }
 
                 String snippet = realMessage.getSnippet();
-                snippet = snippet.replaceAll("[^a-zA-Z0-9 ]", "");
-                snippet = snippet.replace("quot", "");
+                snippet = HtmlEscape.unescapeHtml(snippet);
+                snippet = snippet.replace("\\", "");
+                snippet = snippet.replace("/", "");
+                snippet = snippet.replace(":", "");
+                snippet = snippet.replace("*", "");
+                snippet = snippet.replace("?", "");
+                snippet = snippet.replace("\"", "");
+                snippet = snippet.replace("<", "");
+                snippet = snippet.replace(">", "");
+                snippet = snippet.replace("|", "");
                 mailName += snippet;
 
                 Boolean subfolderFound = false;
