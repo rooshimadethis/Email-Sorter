@@ -33,7 +33,7 @@
       <Label text="How old should email be before they are saved/deleted" GridPane.rowIndex="5" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <Button alignment="CENTER_RIGHT" layoutX="50.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#savePreferences" text="Next" />
+            <Button fx:id="nextButton" alignment="CENTER_RIGHT" defaultButton="true" layoutX="50.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#savePreferences" text="Next" />
          </children>
       </Pane>
       

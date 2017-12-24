@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartupController">
+<AnchorPane fx:id="anchorPane" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartupController">
    <children>
       <VBox alignment="CENTER" layoutX="69.0" layoutY="-13.0" prefHeight="300.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -59,7 +59,7 @@
                   <Font name="Roboto Regular" size="12.0" />
                </font>
             </Label>
-             <Button onAction="#handleLogin" text="Login">
+             <Button fx:id="loginButton" defaultButton="true" onAction="#handleLogin" text="Login">
                <VBox.margin>
                   <Insets left="400.0" top="30.0" />
                </VBox.margin>

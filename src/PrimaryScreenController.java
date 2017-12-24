@@ -201,6 +201,10 @@ public class PrimaryScreenController {
         Main.getInstance().goToEditFolder();
     }
 
+    @FXML protected void goToUpdatePreferences() {
+        Main.getInstance().goToUpdatePreferences();
+    }
+
     public void addNewFolder(String name, String type, ArrayList<String> keywords){
         Type newType = null;
 

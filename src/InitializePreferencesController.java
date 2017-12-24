@@ -1,6 +1,9 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -17,10 +20,13 @@ public class InitializePreferencesController {
     @FXML private CheckBox outCheckBox;
     @FXML private CheckBox separateCheckBox;
     @FXML private ComboBox<String> saveDelayComboBox;
+    @FXML private Button nextButton;
 
 
     @FXML
     public void initialize() {
+        nextButton.setDisable(true);
+
         ObservableList<String> saveDelays =
                 FXCollections.observableArrayList();
         saveDelays.add(0, "Any age");
@@ -44,6 +50,11 @@ public class InitializePreferencesController {
             } else {
                 separateCheckBox.setSelected(false);
                 separateCheckBox.setDisable(true);
+            }
+        });
+        saveDelayComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (saveDelayComboBox.getSelectionModel().getSelectedItem() != null){
+                nextButton.setDisable(false);
             }
         });
     }

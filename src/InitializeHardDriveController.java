@@ -1,14 +1,13 @@
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.nio.file.Path;
@@ -18,13 +17,19 @@ public class InitializeHardDriveController {
 
     @FXML private Label warningText;
     @FXML private TextField directoryField;
+    @FXML private Button nextButton;
 
     private File emailDirectory;
 
 
     @FXML
     public void initialize() {
-
+    nextButton.setDisable(true);
+    directoryField.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (directoryField.getCharacters() != null){
+            nextButton.setDisable(false);
+        }
+    });
     }
 
 

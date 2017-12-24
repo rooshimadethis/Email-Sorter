@@ -14,5 +14,6 @@
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="jsoup-1.10.3" level="project" />
     <orderEntry type="library" name="dist" level="project" />
+    <orderEntry type="library" name="JFoenix" level="project" />
   </component>
 </module>

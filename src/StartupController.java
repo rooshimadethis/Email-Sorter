@@ -4,6 +4,7 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import com.google.api.services.gmail.model.Profile;
@@ -20,6 +23,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
@@ -41,12 +45,13 @@ public class StartupController {
 
     private DataStore dataStore;
 
+    @FXML private AnchorPane anchorPane;
     @FXML private Label warningText;
     @FXML private Text newAccountText;
     @FXML private ComboBox<String> accountDropdown;
     @FXML private Label titleLabel;
+    @FXML private Button loginButton;
 
-    //TODO maybe keep in a few methods
 
     @FXML
     public void initialize() {
@@ -56,8 +61,16 @@ public class StartupController {
         dataStore = new DataStore();
         users = DataStore.loadUsers();
         updateDropdownList();
+        anchorPane.setStyle("-fx-background-color: #" + Design.getPrimaryColor());
+        Font font = Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Light.ttf"), 66);
+        titleLabel.setFont(font);
         titleLabel.setStyle("-fx-font-smoothing-type: gray");
-
+        loginButton.setDisable(true);
+        accountDropdown.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (accountDropdown.getSelectionModel().getSelectedItem() != null){
+                loginButton.setDisable(false);
+            }
+        });
     }
 
     public void saveUsers() {
@@ -119,7 +132,7 @@ public class StartupController {
                         User newUser = new User(newUserID, newEmailAddress);
                         users.add(newUser);
 
-                        DataStore.createNewPreferences(newUserID);
+                        DataStore.createNewPreferences(newUser.getShortAddress());
 
                         Platform.runLater(() -> warningText.setVisible(false));
                         newAccountThreadRunning = false;
@@ -131,16 +144,6 @@ public class StartupController {
     }
 
     private String generateNewUserID() {
-        /*int lastNumber = 0;
-        for (User user : users) {
-            String num = user.getUserID().replace("user", "");
-            int number = Integer.parseInt(num);
-            if (number > lastNumber) {
-                lastNumber = number;
-            }
-        }
-        return "user" + (lastNumber+1);
-        */
         Random random = new Random();
         return ("user" + random.nextInt(100000));
     }

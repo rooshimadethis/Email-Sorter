@@ -33,7 +33,7 @@ public class DataStore implements Serializable{
     public static String[] loadHardDriveInfo() {
         String[] data = null;
         try {
-            File userFile = new File(HD_FILE_DIR);
+            File userFile = new File(BASE_DIR + "\\" + HD_FILE_DIR);
             Boolean filemade = userFile.getParentFile().mkdir();
 
             FileInputStream fileInputStream = new FileInputStream(userFile);
@@ -50,7 +50,7 @@ public class DataStore implements Serializable{
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
         try {
-            File userFile = new File(USER_FILE_DIR);
+            File userFile = new File(BASE_DIR + "\\" + USER_FILE_DIR);
             Boolean filemade = userFile.getParentFile().mkdir();
 
             FileInputStream fileInputStream = new FileInputStream(userFile);
@@ -164,12 +164,12 @@ public class DataStore implements Serializable{
         }catch (Exception e) {e.printStackTrace();}
     }
 
-    public static void createNewPreferences(String userID){
-        Preferences preferences = Preferences.userRoot().node(userID);
+    public static void createNewPreferences(String userShortAddress){
+        Preferences preferences = Preferences.userRoot().node(userShortAddress);
     }
 
     public static Preferences getPreferencesforCurrentUser() {
-        return Preferences.userRoot().node(Main.getInstance().getCurrentUser().getUserID());
+        return Preferences.userRoot().node(Main.getInstance().getCurrentUser().getShortAddress());
     }
 
     public static String getDeleteKey() {

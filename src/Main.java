@@ -4,8 +4,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import sun.security.krb5.internal.crypto.Des;
 
 public class Main extends Application {
     private static Main instance;
@@ -63,7 +67,7 @@ public class Main extends Application {
 
     public void goToStartup() {
         try {
-            replaceSceneContent("/fxml/startup.fxml", 600, 400);
+            replaceSceneContent("/fxml/startup.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 600, 400);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +75,7 @@ public class Main extends Application {
 
     public void goToInitializeHardDrive() {
         try {
-            replaceSceneContent("/fxml/initializeHardDrive.fxml", 400, 150);
+            replaceSceneContent("/fxml/initializeHardDrive.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 400, 150);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +83,7 @@ public class Main extends Application {
 
     public void goToInitializePreferences() {
         try {
-            replaceSceneContent("/fxml/initializePreferences.fxml", 500, 300);
+            replaceSceneContent("/fxml/initializePreferences.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 500, 300);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,7 +91,7 @@ public class Main extends Application {
 
     public void goToPrimaryScreen() {
         try {
-            replaceSceneContent("/fxml/primaryScreen.fxml", 600, 500);
+            replaceSceneContent("/fxml/primaryScreen.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 600, 500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -117,6 +121,14 @@ public class Main extends Application {
         }
     }
 
+    public void goToUpdatePreferences() {
+        try {
+            popUpModalWindow("/fxml/updatePreferences.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void popUpModalWindow(String fxml) {
         try {
             modal = new Stage();
@@ -141,7 +153,7 @@ public class Main extends Application {
         }
     }
 
-    private Parent replaceSceneContent(String fxml, int width, int height) {
+    private Parent replaceSceneContent(String fxml, Paint fill, int width, int height) {
         try {
 
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
@@ -158,7 +170,9 @@ public class Main extends Application {
             //if (scene == null) {
                 stage.close();
                 Scene scene = new Scene(page, width, height);
+                //scene.setFill(Color.TRANSPARENT);
                 stage = new Stage();
+                //stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setScene(scene);
             //} else {
             //    stage.getScene().setRoot(page);

@@ -5,10 +5,12 @@ public class User implements Serializable{
     private String emailAddress;
     private String userID;
     private String userPath;
+    private String shortAddress;
     private boolean doneInitialSetup;
 
  public User(String userID, String emailAddress) {
      this.emailAddress = emailAddress;
+     shortAddress = emailAddress.substring(0, emailAddress.indexOf("@"));
      this.userID = userID;
      //TODO doneInitialSetup = false;
      userPath = "\\" + emailAddress;
@@ -16,6 +18,10 @@ public class User implements Serializable{
 
     public String getEmailAddress() {
         return emailAddress;
+    }
+
+    public String getShortAddress() {
+        return shortAddress;
     }
 
     public String getUserID() {

@@ -1,5 +1,6 @@
 import ch.astorm.jotlmsg.OutlookMessage;
 import ch.astorm.jotlmsg.OutlookMessageAttachment;
+import ch.astorm.jotlmsg.OutlookMessageRecipient;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.util.Base64;
 import com.google.api.client.util.Data;
@@ -10,6 +11,8 @@ import org.jsoup.Jsoup;
 import org.unbescape.html.HtmlEscape;
 
 import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,6 +34,7 @@ public class GmailHandler {
         createBaseQuery();
     }
 
+    //creates the query based on preferences to later send request
     private void createBaseQuery() {
         String query = "";
 
@@ -101,6 +105,14 @@ public class GmailHandler {
                 String mailName = "";
 
                 Message realMessage = gmailService.users().messages().get("me", message.getId()).setFormat("full").execute();
+                //MimeMessage message1 =;
+                Base64 base64Url = new Base64(true);
+                byte[] emailBytes = Base64.decodeBase64(message.getRaw());
+                Properties props = new Properties();
+                Session session = Session.getDefaultInstance(props, null);
+
+                MimeMessage email = new MimeMessage(session, new ByteArrayInputStream(emailBytes));
+
                 OutlookMessage outlookMessage = new OutlookMessage();
                 outlookMessage.setFrom(getMessageFrom(realMessage));
                 outlookMessage.setReplyTo(Collections.singletonList(getMessageTo(realMessage)));
@@ -110,6 +122,9 @@ public class GmailHandler {
                 for (OutlookMessageAttachment attachment : attachments) {
                     outlookMessage.addAttachment(attachment);
                 }
+
+                //outlookMessage.addRecipient(OutlookMessageRecipient.Type., );
+                //outlookMessage.add
 
                 String messageTime = getMessageTime(realMessage);
                 SimpleDateFormat receivedFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss X");
@@ -129,8 +144,9 @@ public class GmailHandler {
                     sent = true;
                     String to = outlookMessage.getReplyTo().toString().replace("<", "").replace(">", "").replace("\"", "");
                     mailName += to + " ";
-                } else /*if (outlookMessage.getReplyTo().contains(userEmail))*/{
-                    received = true;
+                } else //if (outlookMessage.getReplyTo().contains(userEmail))*/{
+                //TODO fix
+                {   received = true;
                     mailName += from + " ";
                 }
 
@@ -187,6 +203,7 @@ public class GmailHandler {
                     outlookMessage.writeTo(new File(savePath + ".msg"));
                 }
             }
+
         } catch (Exception e) {e.printStackTrace();}
     }
 
@@ -203,6 +220,7 @@ public class GmailHandler {
         return "";
     }
 
+    //Parses given message to return plain text sender name/address
     private String getMessageFrom(Message message) {
         MessagePart msgpart = message.getPayload();
         List<MessagePartHeader> headers = message.getPayload().getHeaders();
@@ -214,6 +232,7 @@ public class GmailHandler {
         return "";
     }
 
+    //Parses given message to return plain text recipient name/address
     private String getMessageTo(Message message) {
         MessagePart msgpart = message.getPayload();
         List<MessagePartHeader> headers = message.getPayload().getHeaders();
@@ -225,6 +244,7 @@ public class GmailHandler {
         return "";
     }
 
+    //Parses given message to return plain text date
     private String getMessageTime(Message message) {
         MessagePart msgpart = message.getPayload();
         List<MessagePartHeader> headers = message.getPayload().getHeaders();
@@ -236,6 +256,7 @@ public class GmailHandler {
         return "";
     }
 
+    //Parses given message to return plain text body
     private String getMessageBody(Message message) {
         String MailBody = "";
         try{
