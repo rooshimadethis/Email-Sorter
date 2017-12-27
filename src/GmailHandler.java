@@ -1,20 +1,14 @@
-import ch.astorm.jotlmsg.OutlookMessage;
-import ch.astorm.jotlmsg.OutlookMessageAttachment;
-import ch.astorm.jotlmsg.OutlookMessageRecipient;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.util.Base64;
-import com.google.api.client.util.Data;
-import com.google.api.client.util.StringUtils;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.*;
-import org.jsoup.Jsoup;
+
 import org.unbescape.html.HtmlEscape;
 
-import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.prefs.Preferences;
@@ -102,52 +96,41 @@ public class GmailHandler {
         try {
             for (Message message : messages) {
                 String path = "";
-                String mailName = "";
+                StringBuilder mailName = new StringBuilder();
 
                 Message realMessage = gmailService.users().messages().get("me", message.getId()).setFormat("full").execute();
-                //MimeMessage message1 =;
-                Base64 base64Url = new Base64(true);
-                byte[] emailBytes = Base64.decodeBase64(message.getRaw());
+                Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
+
+                byte[] emailBytes = rawMessage.decodeRaw();
+
                 Properties props = new Properties();
                 Session session = Session.getDefaultInstance(props, null);
-
                 MimeMessage email = new MimeMessage(session, new ByteArrayInputStream(emailBytes));
-
-                OutlookMessage outlookMessage = new OutlookMessage();
-                outlookMessage.setFrom(getMessageFrom(realMessage));
-                outlookMessage.setReplyTo(Collections.singletonList(getMessageTo(realMessage)));
-                outlookMessage.setSubject(getMessageSubject(realMessage));
-                outlookMessage.setPlainTextBody(getMessageBody(realMessage));
-                ArrayList<OutlookMessageAttachment> attachments = getMessageAttachments(realMessage);
-                for (OutlookMessageAttachment attachment : attachments) {
-                    outlookMessage.addAttachment(attachment);
-                }
-
-                //outlookMessage.addRecipient(OutlookMessageRecipient.Type., );
-                //outlookMessage.add
 
                 String messageTime = getMessageTime(realMessage);
                 SimpleDateFormat receivedFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss X");
                 SimpleDateFormat desiredFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
                 Date date = receivedFormat.parse(messageTime);
                 String desiredDate = desiredFormat.format(date);
-                mailName += desiredDate + " ";
+                mailName.append(desiredDate);
+                mailName.append(" ");
 
-                mailName += currentFolder.getName() + " ";
+                mailName.append(currentFolder.getName());
+                mailName.append(" ");
 
                 String userEmail = Main.getInstance().getCurrentUser().getEmailAddress();
                 Boolean sent = false;
-                Boolean received = false;
-                String from = outlookMessage.getFrom().replace("<", "").replace(">", "").replace("\"", "");
+                String from = getMessageFrom(realMessage).replace("<", "").replace(">", "").replace("\"", "");
 
                 if (from.contains(userEmail)){
                     sent = true;
-                    String to = outlookMessage.getReplyTo().toString().replace("<", "").replace(">", "").replace("\"", "");
-                    mailName += to + " ";
-                } else //if (outlookMessage.getReplyTo().contains(userEmail))*/{
-                //TODO fix
-                {   received = true;
-                    mailName += from + " ";
+                    String to = Collections.singletonList(getMessageTo(realMessage)).toString().replace("<", "").replace(">", "").replace("\"", "");
+                    mailName.append(to);
+                    mailName.append(" ");
+                } else {
+                    //TODO fix
+                    mailName.append(from);
+                    mailName.append(" ");
                 }
 
                 String snippet = realMessage.getSnippet();
@@ -161,11 +144,11 @@ public class GmailHandler {
                 snippet = snippet.replace("<", "");
                 snippet = snippet.replace(">", "");
                 snippet = snippet.replace("|", "");
-                mailName += snippet;
+                mailName.append(snippet);
 
                 Boolean subfolderFound = false;
                 for (Subfolder subfolder : currentFolder.getSubfolders()) {
-                    if (outlookMessage.getSubject().contains(subfolder.getName())) {
+                    if (getMessageSubject(realMessage).contains(subfolder.getName())) {
                         if (subfolder.isSeparate()) {
                             if (sent) {
                                 path = subfolder.getSentPath();
@@ -193,14 +176,14 @@ public class GmailHandler {
                     }
                 }
                 if (!path.equals("")) {
-                    //mailName = mailName.replaceAll("[^a-zA-Z0-9_[ ][-]]", "");
-                    String savePath = path + "/" + mailName;
+                    String savePath = path + "/" + mailName.toString();
                     if (savePath.length() > 249){
                         int pathSize = path.length() + 1;
-                        mailName = mailName.substring(0, 249-pathSize);
-                        savePath = path + "/" + mailName;
+                        String mailString = mailName.toString();
+                        mailString = mailString.substring(0, 249-pathSize);
+                        savePath = path + "/" + mailString;
                     }
-                    outlookMessage.writeTo(new File(savePath + ".msg"));
+                    email.writeTo(new FileOutputStream(new File(savePath + ".eml")));
                 }
             }
 
@@ -222,7 +205,6 @@ public class GmailHandler {
 
     //Parses given message to return plain text sender name/address
     private String getMessageFrom(Message message) {
-        MessagePart msgpart = message.getPayload();
         List<MessagePartHeader> headers = message.getPayload().getHeaders();
         for(MessagePartHeader header : headers){
             if(header.getName().equals("From")){
@@ -246,7 +228,6 @@ public class GmailHandler {
 
     //Parses given message to return plain text date
     private String getMessageTime(Message message) {
-        MessagePart msgpart = message.getPayload();
         List<MessagePartHeader> headers = message.getPayload().getHeaders();
         for(MessagePartHeader header : headers){
             if(header.getName().equals("Date")){
@@ -256,59 +237,4 @@ public class GmailHandler {
         return "";
     }
 
-    //Parses given message to return plain text body
-    private String getMessageBody(Message message) {
-        String MailBody = "";
-        try{
-            MessagePart msgpart = message.getPayload();
-            List<MessagePart> bodyParts = msgpart.getParts();
-            for(MessagePart part : bodyParts){
-                if (part.getMimeType().equals("text/plain")){
-                    MailBody += StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()));
-                } else if (part.getMimeType().equals("text/html")){
-                    MailBody += Jsoup.parse(StringUtils.newStringUtf8(Base64.decodeBase64(part.getBody().getData().getBytes()))).body().text();
-                    System.out.println();
-                } else if (part.getMimeType().equals("multipart/alternative")){
-                    List<MessagePart> messageParts = part.getParts();
-                for (int i = 0; i < messageParts.size(); i++) {
-                    MessagePart part2 = messageParts.get(i);
-                    if (part2.getMimeType().equals("text/plain")) {
-                        MailBody += StringUtils.newStringUtf8(Base64.decodeBase64(part2.getBody().getData().getBytes()));
-                    } else if (part2.getMimeType().equals("text/html")){
-                        MailBody += Jsoup.parse(StringUtils.newStringUtf8(Base64.decodeBase64(part2.getBody().getData().getBytes()))).body().text();
-                        System.out.println();
-                    }
-                }
-                }
-
-                if(MailBody.equals("")){
-                    MailBody = StringUtils.newStringUtf8(Base64.decodeBase64(part.getParts().get(1).getBody().getData().getBytes()));
-                }
-
-                break;
-            }
-            return MailBody;
-        }catch(NullPointerException e){
-            return null;
-        }
-    }
-
-    private ArrayList<OutlookMessageAttachment> getMessageAttachments(Message message) {
-        ArrayList<OutlookMessageAttachment> attachments = new ArrayList<>();
-        try {
-            List<MessagePart> messageParts = message.getPayload().getParts();
-            for (MessagePart part : messageParts) {
-                if (part.getFilename().length() > 0) {
-                    String filename = part.getFilename();
-                    MessagePartBody attachmentParts = part.getBody();
-                    String attId = attachmentParts.getAttachmentId();
-                    MessagePartBody attachPart = gmailService.users().messages().attachments().
-                            get("me", message.getId(), attId).execute();
-                    byte[] fileByteArray = com.google.api.client.util.Base64.decodeBase64(attachPart.getData());
-                    attachments.add(new OutlookMessageAttachment(filename, part.getMimeType(), new ByteArrayInputStream(fileByteArray)));
-                }
-            }
-        } catch (Exception e) {e.printStackTrace();}
-        return attachments;
-    }
 }
