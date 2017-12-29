@@ -4,6 +4,7 @@ import com.google.api.services.gmail.model.*;
 
 import org.unbescape.html.HtmlEscape;
 
+import javax.mail.Address;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayInputStream;
@@ -32,7 +33,7 @@ public class GmailHandler {
     private void createBaseQuery() {
         String query = "";
 
-        Preferences preferences = DataStore.getPreferencesforCurrentUser();
+        Preferences preferences = DataStore.getPreferencesForCurrentUser();
         deletePreference = preferences.getBoolean(DataStore.getDeleteKey(), false);
         readPreference = preferences.getBoolean(DataStore.getReadKey(), true);
         receivedPreference = preferences.getBoolean(DataStore.getIncomingKey(), false);
@@ -84,9 +85,6 @@ public class GmailHandler {
                 ListMessagesResponse messagesResponse = gmailService.users().messages().list(me).setQ(folderQuery).execute();
                 List<Message> receivedMessages = messagesResponse.getMessages();
                 saveMessages(new ArrayList<Message>(receivedMessages), folder);
-                //folder.setFolderSaveDate();
-
-
 
             } catch (Exception e) {e.printStackTrace();}
         }
@@ -98,21 +96,22 @@ public class GmailHandler {
                 String path = "";
                 StringBuilder mailName = new StringBuilder();
 
-                Message realMessage = gmailService.users().messages().get("me", message.getId()).setFormat("full").execute();
-                Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
 
+                long start = System.currentTimeMillis();
+
+                //Message realMessage = gmailService.users().messages().get("me", message.getId()).setFormat("metadata").execute();
+
+                Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
+                long end = System.currentTimeMillis();
+                System.out.println("Time for both emails " + (end-start));
                 byte[] emailBytes = rawMessage.decodeRaw();
 
                 Properties props = new Properties();
                 Session session = Session.getDefaultInstance(props, null);
                 MimeMessage email = new MimeMessage(session, new ByteArrayInputStream(emailBytes));
 
-                String messageTime = getMessageTime(realMessage);
-                SimpleDateFormat receivedFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss X");
-                SimpleDateFormat desiredFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-                Date date = receivedFormat.parse(messageTime);
-                String desiredDate = desiredFormat.format(date);
-                mailName.append(desiredDate);
+                String messageTime = getMessageTimeAsString(email);
+                mailName.append(messageTime);
                 mailName.append(" ");
 
                 mailName.append(currentFolder.getName());
@@ -120,20 +119,32 @@ public class GmailHandler {
 
                 String userEmail = Main.getInstance().getCurrentUser().getEmailAddress();
                 Boolean sent = false;
-                String from = getMessageFrom(realMessage).replace("<", "").replace(">", "").replace("\"", "");
+                String from = getMessageFrom(email).replace("<", "").replace(">", "").replace("\"", "");
 
                 if (from.contains(userEmail)){
-                    sent = true;
-                    String to = Collections.singletonList(getMessageTo(realMessage)).toString().replace("<", "").replace(">", "").replace("\"", "");
-                    mailName.append(to);
-                    mailName.append(" ");
-                } else {
-                    //TODO fix
-                    mailName.append(from);
-                    mailName.append(" ");
-                }
 
-                String snippet = realMessage.getSnippet();
+                    sent = true;
+                    String[] toArr = getMessageTo(email);
+                    String first = toArr[0];
+                    if (first.contains("<")) {
+                        int index1 = first.indexOf("<")+1;
+                        int index2 = first.indexOf(">");
+                        mailName.append(first.substring(index1, index2));
+                    } else {
+                        mailName.append(first);
+                    }
+                    if (toArr.length > 1){
+                        mailName.append(" (and more)");
+                    }
+
+                } else {
+                    mailName.append(from);
+                }
+                mailName.append(" ");
+
+
+                String snippet = rawMessage.getSnippet();
+                String testSnippet = email.getContent().toString();
                 snippet = HtmlEscape.unescapeHtml(snippet);
                 snippet = snippet.replace("\\", "");
                 snippet = snippet.replace("/", "");
@@ -148,7 +159,7 @@ public class GmailHandler {
 
                 Boolean subfolderFound = false;
                 for (Subfolder subfolder : currentFolder.getSubfolders()) {
-                    if (getMessageSubject(realMessage).contains(subfolder.getName())) {
+                    if (getMessageSubject(email).contains(subfolder.getName())) {
                         if (subfolder.isSeparate()) {
                             if (sent) {
                                 path = subfolder.getSentPath();
@@ -183,58 +194,57 @@ public class GmailHandler {
                         mailString = mailString.substring(0, 249-pathSize);
                         savePath = path + "/" + mailString;
                     }
-                    email.writeTo(new FileOutputStream(new File(savePath + ".eml")));
+                    FileOutputStream fout = new FileOutputStream(new File(savePath + ".eml"));
+                    email.writeTo(fout);
+                    fout.close();
                 }
+
             }
 
         } catch (Exception e) {e.printStackTrace();}
     }
 
-    private String getMessageSubject(Message message) {
-//		System.out.println(message.toPrettyString());
-        MessagePart msgpart = message.getPayload();
-
-        List<MessagePartHeader> headers = message.getPayload().getHeaders();
-        for(MessagePartHeader header : headers){
-            if(header.getName().equals("Subject")){
-                return header.getValue();
-            }
-        }
-        return "";
+    private String getMessageSubject(MimeMessage message) {
+        String subject = "";
+        try{
+            subject = message.getSubject();
+        } catch (Exception e) {e.printStackTrace();}
+        return subject;
     }
 
     //Parses given message to return plain text sender name/address
-    private String getMessageFrom(Message message) {
-        List<MessagePartHeader> headers = message.getPayload().getHeaders();
-        for(MessagePartHeader header : headers){
-            if(header.getName().equals("From")){
-                return header.getValue();
-            }
-        }
-        return "";
+    private String getMessageFrom(MimeMessage message) {
+        String from = "";
+        try{
+            from = message.getHeader("From")[0];
+        } catch (Exception e) {e.printStackTrace();}
+        return from;
     }
 
     //Parses given message to return plain text recipient name/address
-    private String getMessageTo(Message message) {
-        MessagePart msgpart = message.getPayload();
-        List<MessagePartHeader> headers = message.getPayload().getHeaders();
-        for(MessagePartHeader header : headers){
-            if(header.getName().equals("To")){
-                return header.getValue();
-            }
-        }
-        return "";
+    private String[] getMessageTo(MimeMessage message) {
+        String[] deliveredTo = {};
+        try {
+            deliveredTo = message.getHeader("To");
+
+        } catch (Exception e) {e.printStackTrace();}
+        return deliveredTo;
     }
 
     //Parses given message to return plain text date
-    private String getMessageTime(Message message) {
-        List<MessagePartHeader> headers = message.getPayload().getHeaders();
-        for(MessagePartHeader header : headers){
-            if(header.getName().equals("Date")){
-                return header.getValue();
-            }
-        }
-        return "";
+    private String getMessageTimeAsString(MimeMessage message) {
+        String time = "UnknownTime";
+        try{
+            String dateHeader = message.getHeader("Date")[0];
+
+            SimpleDateFormat origFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z");
+            Date date = origFormat.parse(dateHeader);
+
+            SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+            time = newFormat.format(date);
+
+        } catch (Exception e) {e.printStackTrace();}
+        return time;
     }
 
 }

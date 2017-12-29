@@ -37,7 +37,7 @@
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin></ImageView>
-                  <ImageView fx:id="preferencesImageView" fitHeight="85.0" fitWidth="109.0" layoutX="228.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="preferencesImageView" fitHeight="85.0" fitWidth="109.0" layoutX="228.0" layoutY="10.0" onMouseClicked="#goToSetPreferences" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/images/wrench.png" />
                      </image>

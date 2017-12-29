@@ -1,15 +1,10 @@
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import sun.security.krb5.internal.crypto.Des;
 
 public class Main extends Application {
     private static Main instance;
@@ -121,9 +116,9 @@ public class Main extends Application {
         }
     }
 
-    public void goToUpdatePreferences() {
+    public void goToSetPreferences() {
         try {
-            popUpModalWindow("/fxml/updatePreferences.fxml");
+            popUpModalWindow("/fxml/setPreferences.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }

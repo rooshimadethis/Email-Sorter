@@ -185,7 +185,7 @@ public class PrimaryScreenController {
     }
 
     public void loadPreferences() {
-        Preferences preferences = DataStore.getPreferencesforCurrentUser();
+        Preferences preferences = DataStore.getPreferencesForCurrentUser();
         separateInOut = preferences.getBoolean(DataStore.getSeparateKey(), true);
     }
 
@@ -201,8 +201,12 @@ public class PrimaryScreenController {
         Main.getInstance().goToEditFolder();
     }
 
-    @FXML protected void goToUpdatePreferences() {
-        Main.getInstance().goToUpdatePreferences();
+    @FXML protected void goToInitializePreferences() {
+        Main.getInstance().goToInitializePreferences();
+    }
+
+    @FXML protected void goToSetPreferences() {
+        Main.getInstance().goToSetPreferences();
     }
 
     public void addNewFolder(String name, String type, ArrayList<String> keywords){

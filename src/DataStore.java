@@ -8,8 +8,8 @@ public class DataStore implements Serializable{
     private static final String BASE_DIR = System.getProperty("user.dir") + "\\data";
     private static final String DELETE_PREFERENCE_KEY = "delete_key";
     private static final String READ_PREFERENCE_KEY = "read_key";
-    private static final String INCOMING_PREFERENCE_KEY = "incoming_key";
-    private static final String OUTGOING_PREFERENCE_KEY = "outgoing_key";
+    private static final String RECEIVED_PREFERENCE_KEY = "received_key";
+    private static final String SENT_PREFERENCE_KEY = "sent_key";
     private static final String SEPARATE_PREFERENCE_KEY = "separate_key";
     private static final String SAVE_DELAY_PREFERENCE_KEY = "save_delay_key";
     private static final String USER_FILE_DIR = "\\UserData";
@@ -17,7 +17,6 @@ public class DataStore implements Serializable{
     private static final String FOLDER_FILE_DIR = "FolderData";
     private static final String DISABLED_FOLDER_FILE_DIR = "DisabledFolderData";
     private static final String HD_FILE_DIR = "HardDriveData";
-    //private String currentUserPath;
 
     public static void saveHardDriveInfo(String HDName, String folderPath){
         String[] HDData = {HDName, folderPath};
@@ -58,7 +57,8 @@ public class DataStore implements Serializable{
 
             users = (ArrayList<User>)objectInputStream.readObject();
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (FileNotFoundException ignored) {}
+          catch (Exception e){e.printStackTrace();}
         if (users != null) {
             return users;
         } else return new ArrayList<User>();
@@ -94,7 +94,8 @@ public class DataStore implements Serializable{
                 types = (ArrayList<Type>) objectInputStream.readObject();
             }
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (FileNotFoundException ignored) {}
+        catch (Exception e){e.printStackTrace();}
         if (types != null) {
             return types;
         } else return new ArrayList<Type>();
@@ -121,7 +122,8 @@ public class DataStore implements Serializable{
 
             folders = (ArrayList<Folder>)objectInputStream.readObject();
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (FileNotFoundException ignored) {}
+        catch (Exception e){e.printStackTrace();}
         if (folders != null) {
             return folders;
         } else return new ArrayList<Folder>();
@@ -148,7 +150,8 @@ public class DataStore implements Serializable{
 
             folders = (ArrayList<Folder>)objectInputStream.readObject();
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (FileNotFoundException ignored) {}
+        catch (Exception e){e.printStackTrace();}
         if (folders != null) {
             return folders;
         } else return new ArrayList<Folder>();
@@ -168,7 +171,7 @@ public class DataStore implements Serializable{
         Preferences preferences = Preferences.userRoot().node(userShortAddress);
     }
 
-    public static Preferences getPreferencesforCurrentUser() {
+    public static Preferences getPreferencesForCurrentUser() {
         return Preferences.userRoot().node(Main.getInstance().getCurrentUser().getShortAddress());
     }
 
@@ -181,11 +184,11 @@ public class DataStore implements Serializable{
     }
 
     public static String getIncomingKey() {
-        return INCOMING_PREFERENCE_KEY;
+        return RECEIVED_PREFERENCE_KEY;
     }
 
     public static String getOutgoingKey() {
-        return OUTGOING_PREFERENCE_KEY;
+        return SENT_PREFERENCE_KEY;
     }
 
     public static String getSeparateKey() { return SEPARATE_PREFERENCE_KEY; }

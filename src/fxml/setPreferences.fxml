@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InitializePreferencesController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SetPreferencesController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
@@ -26,14 +26,14 @@
    <children>
       <CheckBox fx:id="deleteCheckBox" mnemonicParsing="false" text="Delete emails after saving to hard drive" />
       <CheckBox fx:id="readCheckBox" mnemonicParsing="false" text="Only save (and possibly delete) read emails" GridPane.rowIndex="1" />
-      <CheckBox fx:id="inCheckBox" mnemonicParsing="false" text="Save all Received emails" GridPane.rowIndex="2" />
-      <CheckBox fx:id="outCheckBox" mnemonicParsing="false" text="Save all Sent emails" GridPane.rowIndex="3" />
+      <CheckBox fx:id="receivedCheckBox" mnemonicParsing="false" text="Save all Received emails" GridPane.rowIndex="2" />
+      <CheckBox fx:id="sentCheckBox" mnemonicParsing="false" text="Save all Sent emails" GridPane.rowIndex="3" />
       <CheckBox fx:id="separateCheckBox" mnemonicParsing="false" text="Save Received and Sent emails in separate folders " GridPane.rowIndex="4" />
       <ComboBox fx:id="saveDelayComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Label text="How old should email be before they are saved/deleted" GridPane.rowIndex="5" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <Button fx:id="nextButton" alignment="CENTER_RIGHT" defaultButton="true" layoutX="50.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#savePreferences" text="Next" />
+            <Button fx:id="nextButton" alignment="CENTER_RIGHT" defaultButton="true" layoutX="50.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#savePreferences" text="OK" />
          </children>
       </Pane>
       

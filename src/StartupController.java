@@ -61,7 +61,7 @@ public class StartupController {
         dataStore = new DataStore();
         users = DataStore.loadUsers();
         updateDropdownList();
-        anchorPane.setStyle("-fx-background-color: #" + Design.getPrimaryColor());
+        //anchorPane.setStyle("-fx-background-color: #" + Design.getPrimaryColor());
         Font font = Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Light.ttf"), 66);
         titleLabel.setFont(font);
         titleLabel.setStyle("-fx-font-smoothing-type: gray");
@@ -98,10 +98,12 @@ public class StartupController {
         for (int i = 0; i < users.size(); i++){
             if (selectedItem.equals(users.get(i).getEmailAddress())){
                 currentUserIndex = i;
+                Main.getInstance().setCurrentUser(users.get((i)));
+                Main.getInstance().setAuthorizer(mainAuthorizer);
                 if (!users.get(i).hasDoneInitialSetup()){
-                    Main.getInstance().setCurrentUser(users.get((i)));
                     goToInitializeHardDrive();
-
+                } else {
+                    goToPrimaryScreen();
                 }
             }
         }
@@ -161,8 +163,10 @@ public class StartupController {
     }
 
     private void goToInitializeHardDrive() {
-
-        Main.getInstance().setAuthorizer(mainAuthorizer);
         Main.getInstance().goToInitializeHardDrive();
+    }
+
+    private void goToPrimaryScreen() {
+        Main.getInstance().goToPrimaryScreen();
     }
 }
