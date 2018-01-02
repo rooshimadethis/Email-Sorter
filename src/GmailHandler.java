@@ -1,17 +1,22 @@
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.model.*;
-
+import com.google.api.services.gmail.model.ListMessagesResponse;
+import com.google.api.services.gmail.model.Message;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.unbescape.html.HtmlEscape;
 
-import javax.mail.Address;
-import javax.mail.Session;
+import javax.mail.*;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import java.util.prefs.Preferences;
 
 public class GmailHandler {
@@ -96,16 +101,9 @@ public class GmailHandler {
                 String path = "";
                 StringBuilder mailName = new StringBuilder();
 
-
-                long start = System.currentTimeMillis();
-
-                //Message realMessage = gmailService.users().messages().get("me", message.getId()).setFormat("metadata").execute();
-
                 Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
-                long end = System.currentTimeMillis();
-                System.out.println("Time for both emails " + (end-start));
-                byte[] emailBytes = rawMessage.decodeRaw();
 
+                byte[] emailBytes = rawMessage.decodeRaw();
                 Properties props = new Properties();
                 Session session = Session.getDefaultInstance(props, null);
                 MimeMessage email = new MimeMessage(session, new ByteArrayInputStream(emailBytes));
@@ -144,7 +142,6 @@ public class GmailHandler {
 
 
                 String snippet = rawMessage.getSnippet();
-                String testSnippet = email.getContent().toString();
                 snippet = HtmlEscape.unescapeHtml(snippet);
                 snippet = snippet.replace("\\", "");
                 snippet = snippet.replace("/", "");
@@ -246,5 +243,6 @@ public class GmailHandler {
         } catch (Exception e) {e.printStackTrace();}
         return time;
     }
+
 
 }

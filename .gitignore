@@ -46,3 +46,7 @@ out/production/Email Sorter/DataStore.class
 data/emailsortingtest@gmail.com/DisabledFolderData
 data/emailsortingtest@gmail.com/FolderData
 .idea/workspace.xml
+.idea/workspace.xml
+data/emailsortingtest@gmail.com/DisabledFolderData
+data/emailsortingtest@gmail.com/FolderData
+out/production/Email Sorter/GmailHandler.class
