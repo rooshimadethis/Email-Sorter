@@ -1,5 +1,6 @@
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.BatchDeleteMessagesRequest;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
 import com.sun.org.apache.xpath.internal.SourceTree;
@@ -107,7 +108,7 @@ public class GmailHandler {
     }
 
     private void saveMessages(ArrayList<Message> messages, Folder currentFolder) {
-
+        //ArrayList<String> emailsToDelete = new ArrayList<>();
         long totalStart = System.currentTimeMillis();
         int numEmails = 0;
         for (Message message : messages) {
@@ -116,7 +117,6 @@ public class GmailHandler {
                 StringBuilder mailName = new StringBuilder();
 
                 Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
-
                 byte[] emailBytes = rawMessage.decodeRaw();
                 Properties props = new Properties();
                 Session session = Session.getDefaultInstance(props, null);
@@ -207,6 +207,11 @@ public class GmailHandler {
                     email.writeTo(fout);
                     fout.close();
                     numEmails++;
+                    if (deletePreference) {
+                        try {
+                            gmailService.users().messages().trash("me", message.getId()).execute();
+                        } catch (Exception e) {e.printStackTrace();}
+                    }
                 }
 
             } catch (Exception e) {e.printStackTrace();}
