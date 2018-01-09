@@ -2,6 +2,7 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.unbescape.html.HtmlEscape;
 
@@ -87,17 +88,30 @@ public class GmailHandler {
         for (Folder folder : folders) {
             try {
                 String folderQuery = baseQuery + "subject:" + "(" + folder.getName() + ") ";
-                ListMessagesResponse messagesResponse = gmailService.users().messages().list(me).setQ(folderQuery).execute();
-                List<Message> receivedMessages = messagesResponse.getMessages();
-                saveMessages(new ArrayList<Message>(receivedMessages), folder);
+                System.out.println("Query: " + folderQuery);
+                ListMessagesResponse messagesResponse = gmailService.users().messages().list(me).setQ(folderQuery).setMaxResults((long)10000).execute();
+                List<Message> receivedMessages = new ArrayList<>();
+                while (messagesResponse.getMessages() != null) {
+                    receivedMessages.addAll(messagesResponse.getMessages());
+                    saveMessages(new ArrayList<Message>(receivedMessages), folder);
+                    if (messagesResponse.getNextPageToken() != null) {
+                        String pageToken = messagesResponse.getNextPageToken();
+                        messagesResponse = gmailService.users().messages().list(me).setQ(folderQuery).setPageToken(pageToken).setMaxResults((long)10000).execute();
+                    } else {
+                        break;
+                    }
+                }
 
             } catch (Exception e) {e.printStackTrace();}
         }
     }
 
     private void saveMessages(ArrayList<Message> messages, Folder currentFolder) {
-        try {
-            for (Message message : messages) {
+
+        long totalStart = System.currentTimeMillis();
+        int numEmails = 0;
+        for (Message message : messages) {
+            try {
                 String path = "";
                 StringBuilder mailName = new StringBuilder();
 
@@ -142,16 +156,6 @@ public class GmailHandler {
 
 
                 String snippet = rawMessage.getSnippet();
-                snippet = HtmlEscape.unescapeHtml(snippet);
-                snippet = snippet.replace("\\", "");
-                snippet = snippet.replace("/", "");
-                snippet = snippet.replace(":", "");
-                snippet = snippet.replace("*", "");
-                snippet = snippet.replace("?", "");
-                snippet = snippet.replace("\"", "");
-                snippet = snippet.replace("<", "");
-                snippet = snippet.replace(">", "");
-                snippet = snippet.replace("|", "");
                 mailName.append(snippet);
 
                 Boolean subfolderFound = false;
@@ -184,21 +188,33 @@ public class GmailHandler {
                     }
                 }
                 if (!path.equals("")) {
-                    String savePath = path + "/" + mailName.toString();
+                    String fileName = mailName.toString();
+
+                    fileName = HtmlEscape.unescapeHtml(fileName);
+                    fileName = fileName.replace("\\", "");
+                    fileName = fileName.replaceAll("[\"/:*?<>|\n\r\t]", "");
+                    fileName = fileName.replaceAll("[^\\x00-\\x7F]", "");
+
+                    String savePath = path + "/" + fileName;
+
                     if (savePath.length() > 249){
                         int pathSize = path.length() + 1;
-                        String mailString = mailName.toString();
+                        String mailString = fileName;
                         mailString = mailString.substring(0, 249-pathSize);
                         savePath = path + "/" + mailString;
                     }
                     FileOutputStream fout = new FileOutputStream(new File(savePath + ".eml"));
                     email.writeTo(fout);
                     fout.close();
+                    numEmails++;
                 }
 
-            }
+            } catch (Exception e) {e.printStackTrace();}
+        }
+        long totalEnd = System.currentTimeMillis();
+        System.out.println(((totalEnd-totalStart)/1000.0) + " seconds for " + numEmails + " emails.");
 
-        } catch (Exception e) {e.printStackTrace();}
+
     }
 
     private String getMessageSubject(MimeMessage message) {
@@ -232,6 +248,7 @@ public class GmailHandler {
     private String getMessageTimeAsString(MimeMessage message) {
         String time = "UnknownTime";
         try{
+
             String dateHeader = message.getHeader("Date")[0];
 
             SimpleDateFormat origFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z");
@@ -240,7 +257,29 @@ public class GmailHandler {
             SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
             time = newFormat.format(date);
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            try {
+                String dateHeader = message.getHeader("Date")[0];
+
+                SimpleDateFormat origFormat = new SimpleDateFormat("dd MMM yyyy HH:mm:ss Z");
+                Date date = origFormat.parse(dateHeader);
+
+                SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+                time = newFormat.format(date);
+            } catch (Exception e2) {
+                try {
+                    String dateHeader = message.getHeader("Date")[0];
+
+                    SimpleDateFormat origFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+                    Date date = origFormat.parse(dateHeader);
+
+                    SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+                    time = newFormat.format(date);
+                } catch (Exception e3) {
+                    e.printStackTrace();
+                }
+            }
+        }
         return time;
     }
 
