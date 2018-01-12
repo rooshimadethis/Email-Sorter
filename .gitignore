@@ -59,3 +59,6 @@ data/emailsortingtest@gmail.com/TypeData
 .idea/workspace.xml
 out/production/Email Sorter/GmailHandler.class
 out/production/Email Sorter/GmailHandler.class
+.idea/workspace.xml
+*.class
+.idea/artifacts/Email_Sorter.xml

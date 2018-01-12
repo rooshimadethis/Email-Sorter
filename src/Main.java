@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,7 +34,6 @@ public class Main extends Application {
         try {
             stage = primaryStage;
             goToStartup();
-            //primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,10 +45,13 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
+        if (primaryScreenController != null) {
+            primaryScreenController.saveTypes();
+            primaryScreenController.saveFolders();
+            primaryScreenController.saveDisabledFolders();
+        }
         startupController.saveUsers();
-        primaryScreenController.saveTypes();
-        primaryScreenController.saveFolders();
-        primaryScreenController.saveDisabledFolders();
+
         DataStore.saveHardDriveInfo(hardDriveName, rootFolder);
     }
 
@@ -130,7 +133,7 @@ public class Main extends Application {
 
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
             Parent root = loader.load();
-
+            modal.getIcons().add(new Image("/res/images/icon_512.png"));
             modal.setScene(new Scene(root));
             modal.initModality(Modality.APPLICATION_MODAL);
 
@@ -161,18 +164,13 @@ public class Main extends Application {
                 primaryScreenController = loader.getController();
             }
 
-            //Scene scene = stage.getScene();
-            //if (scene == null) {
-                stage.close();
-                Scene scene = new Scene(page, width, height);
-                //scene.setFill(Color.TRANSPARENT);
-                stage = new Stage();
-                //stage.initStyle(StageStyle.TRANSPARENT);
-                stage.setScene(scene);
-            //} else {
-            //    stage.getScene().setRoot(page);
-            //}
-            //stage.sizeToScene();
+            stage.close();
+            Scene scene = new Scene(page, width, height);
+            //scene.setFill(Color.TRANSPARENT);
+            stage = new Stage();
+            //stage.initStyle(StageStyle.TRANSPARENT);
+            stage.getIcons().add(new Image("/res/images/icon_512.png"));
+            stage.setScene(scene);
 
             stage.show();
 

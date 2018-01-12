@@ -7,6 +7,7 @@ import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.Data;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
@@ -19,8 +20,8 @@ import java.util.List;
 public class Authorizer {
 
     private static final String APPLICATION_NAME = "EmailSorter";
-    private static final File DATA_STORE_DIR = new File(System.getProperty("user.dir"), ".store/email_sorter");
-    private static final String CLIENT_SECRET_DIR = System.getProperty("user.dir");
+    private static final String DATA_STORE_DIR = "/credentials/StoredCredential";
+    private static final String CLIENT_SECRET_DIR = "/credentials/client_id.json";
     private static FileDataStoreFactory storeFactory;
     private static HttpTransport httpTransport;
     private static JsonFactory jsonFactory;
@@ -38,14 +39,11 @@ public class Authorizer {
         try {
             httpTransport = GoogleNetHttpTransport.newTrustedTransport();
             jsonFactory = JacksonFactory.getDefaultInstance();
-            storeFactory = new FileDataStoreFactory(DATA_STORE_DIR);
 
-            //Load Client Secrets
-            InputStream in = new FileInputStream(System.getProperty("user.dir") + "/client_id.json");
+            storeFactory = new FileDataStoreFactory(new File(DATA_STORE_DIR));
+
+            InputStream in = Authorizer.class.getResourceAsStream(CLIENT_SECRET_DIR);
             clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(in));
-
-            // Set up authorization code flow
-
 
         } catch (Exception e){e.printStackTrace();}
     }
@@ -58,6 +56,7 @@ public class Authorizer {
                     SCOPES).setDataStoreFactory(storeFactory)
                     .setAccessType("offline")
                     .build();
+
 
             // Authorize
             AuthorizationCodeInstalledApp AuthCodeInstalledApp = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver());
@@ -74,7 +73,4 @@ public class Authorizer {
                 .build();
     }
 
-    /*public Message getMessage() {
-
-    }*/
 }
