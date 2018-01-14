@@ -2,10 +2,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
     private static Main instance;
@@ -31,6 +35,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Font.loadFont(getClass().getResourceAsStream("/res/fonts/Rockwell/rockb.TTF"), 48);
+
         try {
             stage = primaryStage;
             goToStartup();
@@ -164,12 +170,30 @@ public class Main extends Application {
                 primaryScreenController = loader.getController();
             }
 
-            stage.close();
+
+            //stage.close();
             Scene scene = new Scene(page, width, height);
-            //scene.setFill(Color.TRANSPARENT);
-            stage = new Stage();
-            //stage.initStyle(StageStyle.TRANSPARENT);
+            //stage = new Stage();
+            stage.resizableProperty().setValue(Boolean.FALSE);
+
+
+            //stage.initStyle(StageStyle.UNDECORATED);
+            BorderPane borderPane = new BorderPane();
+            borderPane.setStyle("-fx-background-color: green;");
+
+            ToolBar toolBar = new ToolBar();
+
+            int height2 = 25;
+            toolBar.setPrefHeight(height2);
+            toolBar.setMinHeight(height2);
+            toolBar.setMaxHeight(height2);
+            //toolBar.getItems().add(new WindowButtons());
+
+            borderPane.setTop(toolBar);
+
+
             stage.getIcons().add(new Image("/res/images/icon_512.png"));
+            stage.setTitle("Gmail Sorter");
             stage.setScene(scene);
 
             stage.show();

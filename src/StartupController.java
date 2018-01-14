@@ -63,8 +63,6 @@ public class StartupController {
         updateDropdownList();
         //anchorPane.setStyle("-fx-background-color: #" + Design.getPrimaryColor());
         Font font = Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Light.ttf"), 66);
-        titleLabel.setFont(font);
-        titleLabel.setStyle("-fx-font-smoothing-type: gray");
         loginButton.setDisable(true);
         accountDropdown.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (accountDropdown.getSelectionModel().getSelectedItem() != null){
