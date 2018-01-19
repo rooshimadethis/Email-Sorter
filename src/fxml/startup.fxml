@@ -17,11 +17,11 @@
                   <Font name="Roboto Light" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
             <JFXComboBox fx:id="accountDropdown" focusColor="#4f6174" promptText="Choose an account" stylesheets="@../res/css/combobox.css" />
-            <JFXButton stylesheets="@../res/css/button.css" text="Add new Gmail Account" translateY="5.0">
+            <JFXButton onAction="#makeNewAccount" stylesheets="@../res/css/button.css" text="Add new Gmail Account" translateY="5.0">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>

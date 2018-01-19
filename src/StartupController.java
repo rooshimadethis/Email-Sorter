@@ -37,18 +37,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.prefs.Preferences;
 
 public class StartupController {
-    Credential currentUserCredentials;
-    ArrayList<User> users;
-    Authorizer mainAuthorizer;
-    int currentUserIndex;
-    Boolean newAccountThreadRunning;
+    private Credential currentUserCredentials;
+    private ArrayList<User> users;
+    private Authorizer mainAuthorizer;
+    private int currentUserIndex;
+    private Boolean newAccountThreadRunning;
 
     private DataStore dataStore;
 
-    @FXML private AnchorPane anchorPane;
-    @FXML private Text newAccountText;
     @FXML private ComboBox<String> accountDropdown;
-    @FXML private Label titleLabel;
     @FXML private Button loginButton;
 
 
@@ -60,8 +57,6 @@ public class StartupController {
         dataStore = new DataStore();
         users = DataStore.loadUsers();
         updateDropdownList();
-        //anchorPane.setStyle("-fx-background-color: #" + Design.getPrimaryColor());
-        Font font = Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Light.ttf"), 66);
         loginButton.setDisable(true);
         accountDropdown.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (accountDropdown.getSelectionModel().getSelectedItem() != null){
