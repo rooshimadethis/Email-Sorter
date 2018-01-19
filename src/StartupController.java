@@ -46,7 +46,6 @@ public class StartupController {
     private DataStore dataStore;
 
     @FXML private AnchorPane anchorPane;
-    @FXML private Label warningText;
     @FXML private Text newAccountText;
     @FXML private ComboBox<String> accountDropdown;
     @FXML private Label titleLabel;
@@ -111,8 +110,6 @@ public class StartupController {
     @FXML protected void makeNewAccount() {
         //if (!newAccountThreadRunning) {
 
-            warningText.setVisible(true);
-
 
             Thread newAccountThread = new Thread(
                     () -> {
@@ -134,7 +131,6 @@ public class StartupController {
 
                         DataStore.createNewPreferences(newUser.getShortAddress());
 
-                        Platform.runLater(() -> warningText.setVisible(false));
                         newAccountThreadRunning = false;
                         updateDropdownList();
                     });

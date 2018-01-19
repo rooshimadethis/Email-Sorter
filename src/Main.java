@@ -35,7 +35,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Font.loadFont(getClass().getResourceAsStream("/res/fonts/Rockwell/rockb.TTF"), 48);
+        Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Medium"), 48);
 
         try {
             stage = primaryStage;
@@ -71,7 +71,7 @@ public class Main extends Application {
 
     public void goToStartup() {
         try {
-            replaceSceneContent("/fxml/startup.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 600, 400);
+            replaceSceneContent("/fxml/startup.fxml", 600, 400);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +79,7 @@ public class Main extends Application {
 
     public void goToInitializeHardDrive() {
         try {
-            replaceSceneContent("/fxml/initializeHardDrive.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 400, 150);
+            replaceSceneContent("/fxml/initializeHardDrive.fxml",400, 150);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,7 +87,7 @@ public class Main extends Application {
 
     public void goToInitializePreferences() {
         try {
-            replaceSceneContent("/fxml/initializePreferences.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 500, 300);
+            replaceSceneContent("/fxml/initializePreferences.fxml",500, 300);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class Main extends Application {
 
     public void goToPrimaryScreen() {
         try {
-            replaceSceneContent("/fxml/primaryScreen.fxml", Paint.valueOf(Design.getPrimaryLightColor()), 600, 500);
+            replaceSceneContent("/fxml/primaryScreen.fxml", 600, 500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -157,7 +157,7 @@ public class Main extends Application {
         }
     }
 
-    private Parent replaceSceneContent(String fxml, Paint fill, int width, int height) {
+    private Parent replaceSceneContent(String fxml, int width, int height) {
         try {
 
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
