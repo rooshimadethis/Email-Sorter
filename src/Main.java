@@ -87,7 +87,7 @@ public class Main extends Application {
 
     public void goToInitializePreferences() {
         try {
-            replaceSceneContent("/fxml/initializePreferences.fxml",500, 330);
+            replaceSceneContent("/fxml/initializePreferences.fxml",550, 260);
         } catch (Exception e) {
             e.printStackTrace();
         }

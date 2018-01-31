@@ -1,0 +1,8 @@
+.jfx-check-box {
+	-fx-text-fill: white;
+	-fx-font-family: "Roboto Medium";
+    -fx-font-size: 16.0;
+	
+	-jfx-checked-color: #ffba62;
+
+}
