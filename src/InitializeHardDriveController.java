@@ -1,13 +1,10 @@
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.scene.control.Control;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 
-import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.nio.file.Path;
@@ -15,23 +12,29 @@ import java.nio.file.Paths;
 
 public class InitializeHardDriveController {
 
-    @FXML private Label warningText;
     @FXML private TextField directoryField;
     @FXML private Button nextButton;
 
-    private File emailDirectory;
-
-
     @FXML
     public void initialize() {
-    nextButton.setDisable(true);
-    directoryField.textProperty().addListener((observable, oldValue, newValue) -> {
-        if (directoryField.getCharacters() != null){
-            nextButton.setDisable(false);
-        }
-    });
-    }
+        nextButton.setDisable(true);
+        directoryField.setPrefWidth(200);
+        //directoryField.prefColumnCountProperty().bind(directoryField.textProperty().length());
 
+        directoryField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.length() > 0){
+                nextButton.setDisable(false);
+                directoryField.setPrefWidth(TextUtils.computeTextWidth(directoryField.getFont(),
+                        directoryField.getText(), 0.0D) + 10);
+            } else {
+                nextButton.setDisable(true);
+                directoryField.setPrefWidth(200);
+
+            }
+
+        });
+    }
 
     @FXML
     protected void chooseRootFolder() {
@@ -39,7 +42,7 @@ public class InitializeHardDriveController {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select your root email directory (create a folder if you want)");
         //directoryChooser.setInitialDirectory(new File(System.getProperty("user.home") + "Documents"));
-        emailDirectory = directoryChooser.showDialog(Main.getInstance().getStage().getOwner());
+        File emailDirectory = directoryChooser.showDialog(Main.getInstance().getStage().getOwner());
         directoryField.setText(emailDirectory.getAbsolutePath());
 
         Path path = Paths.get(emailDirectory.getAbsolutePath());

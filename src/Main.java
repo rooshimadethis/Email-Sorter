@@ -79,7 +79,7 @@ public class Main extends Application {
 
     public void goToInitializeHardDrive() {
         try {
-            replaceSceneContent("/fxml/initializeHardDrive.fxml",400, 150);
+            replaceSceneContent("/fxml/initializeHardDrive.fxml",400, 180);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,7 +87,7 @@ public class Main extends Application {
 
     public void goToInitializePreferences() {
         try {
-            replaceSceneContent("/fxml/initializePreferences.fxml",500, 300);
+            replaceSceneContent("/fxml/initializePreferences.fxml",500, 330);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,21 +175,6 @@ public class Main extends Application {
             Scene scene = new Scene(page, width, height);
             //stage = new Stage();
             stage.resizableProperty().setValue(Boolean.FALSE);
-
-
-            //stage.initStyle(StageStyle.UNDECORATED);
-            BorderPane borderPane = new BorderPane();
-            borderPane.setStyle("-fx-background-color: green;");
-
-            ToolBar toolBar = new ToolBar();
-
-            int height2 = 25;
-            toolBar.setPrefHeight(height2);
-            toolBar.setMinHeight(height2);
-            toolBar.setMaxHeight(height2);
-            //toolBar.getItems().add(new WindowButtons());
-
-            borderPane.setTop(toolBar);
 
 
             stage.getIcons().add(new Image("/res/images/icon_512.png"));

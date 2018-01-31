@@ -1,0 +1,12 @@
+.jfx-text-field {	
+    -fx-prompt-text-fill: white;
+	-fx-text-fill: white;
+	-fx-font-family: "Roboto Medium";
+    -fx-font-size: 15.0;
+	
+	-fx-prompt-text-fill: white;
+	
+	-jfx-unfocus-color: #8e98a2;
+	-jfx-focus-color: white;
+	
+}
