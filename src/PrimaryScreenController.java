@@ -2,13 +2,19 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
+import com.jfoenix.controls.JFXBadge;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
+import com.jfoenix.controls.JFXScrollPane;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
@@ -35,8 +41,8 @@ public class PrimaryScreenController {
     private User currentUser;
 
     @FXML private ScrollPane folderScrollPane;
-    @FXML private ProgressIndicator progressSpinner;
-    @FXML private Button processEmailsButton;
+    @FXML private JFXProgressBar progressSpinner;
+    @FXML private JFXButton processEmailsButton;
 
     @FXML
     public void initialize() {

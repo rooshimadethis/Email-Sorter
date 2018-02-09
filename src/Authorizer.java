@@ -15,23 +15,20 @@ import com.google.api.services.gmail.model.Message;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Authorizer {
 
     private static final String APPLICATION_NAME = "EmailSorter";
-    private static final String DATA_STORE_DIR = "/credentials/StoredCredential";
+    private static final String DATA_STORE_DIR = System.getProperty("user.dir") + "\\credentials\\StoredCredential";
     private static final String CLIENT_SECRET_DIR = "/credentials/client_id.json";
     private static FileDataStoreFactory storeFactory;
     private static HttpTransport httpTransport;
     private static JsonFactory jsonFactory;
-    private static final List<String> SCOPES = Arrays.asList(
-            "https://www.googleapis.com/auth/gmail.readonly", "https://www.googleapis.com/auth/gmail.compose", "https://www.googleapis.com/auth/gmail.send", "https://www.googleapis.com/auth/gmail.insert",
-            "https://www.googleapis.com/auth/gmail.labels", "https://www.googleapis.com/auth/gmail.modify", "https://www.googleapis.com/auth/gmail.settings.basic",
-            "https://www.googleapis.com/auth/gmail.settings.sharing", "https://mail.google.com/");
+    private static final List<String> SCOPES = Collections.singletonList(
+            "https://www.googleapis.com/auth/gmail.modify");
     private static GoogleClientSecrets clientSecrets;
-    private GoogleAuthorizationCodeFlow flow;
-    private Gmail gmailService;
     private Credential currentUserCredential;
 
 
@@ -42,7 +39,7 @@ public class Authorizer {
 
             storeFactory = new FileDataStoreFactory(new File(DATA_STORE_DIR));
 
-            InputStream in = Authorizer.class.getResourceAsStream(CLIENT_SECRET_DIR);
+            InputStream in = getClass().getResourceAsStream(CLIENT_SECRET_DIR);
             clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(in));
 
         } catch (Exception e){e.printStackTrace();}
@@ -51,9 +48,10 @@ public class Authorizer {
     public Credential authorizeUser(String userID){
         Credential credential = null;
         try {
-            flow = new GoogleAuthorizationCodeFlow.Builder(
+            GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                     httpTransport, jsonFactory, clientSecrets,
-                    SCOPES).setDataStoreFactory(storeFactory)
+                    SCOPES)
+                    .setDataStoreFactory(storeFactory)
                     .setAccessType("offline")
                     .build();
 

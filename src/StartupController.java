@@ -3,6 +3,8 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -45,8 +47,8 @@ public class StartupController {
 
     private DataStore dataStore;
 
-    @FXML private ComboBox<String> accountDropdown;
-    @FXML private Button loginButton;
+    @FXML private JFXComboBox<String> accountDropdown;
+    @FXML private JFXButton loginButton;
 
 
     @FXML

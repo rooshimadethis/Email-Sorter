@@ -1,3 +1,6 @@
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,13 +17,13 @@ import java.util.prefs.Preferences;
 
 public class InitializePreferencesController {
 
-    @FXML private CheckBox deleteCheckBox;
-    @FXML private CheckBox readCheckBox;
-    @FXML private CheckBox inCheckBox;
-    @FXML private CheckBox outCheckBox;
-    @FXML private CheckBox separateCheckBox;
-    @FXML private ComboBox<String> saveDelayComboBox;
-    @FXML private Button nextButton;
+    @FXML private JFXCheckBox deleteCheckBox;
+    @FXML private JFXCheckBox readCheckBox;
+    @FXML private JFXCheckBox inCheckBox;
+    @FXML private JFXCheckBox outCheckBox;
+    @FXML private JFXCheckBox separateCheckBox;
+    @FXML private JFXComboBox<String> saveDelayComboBox;
+    @FXML private JFXButton nextButton;
 
 
     @FXML

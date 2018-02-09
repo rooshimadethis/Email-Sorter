@@ -1,3 +1,5 @@
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -12,8 +14,8 @@ import java.nio.file.Paths;
 
 public class InitializeHardDriveController {
 
-    @FXML private TextField directoryField;
-    @FXML private Button nextButton;
+    @FXML private JFXTextField directoryField;
+    @FXML private JFXButton nextButton;
 
     @FXML
     public void initialize() {
