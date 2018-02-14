@@ -5,6 +5,7 @@ import com.google.api.services.gmail.model.Message;
 import com.jfoenix.controls.*;
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -31,6 +32,7 @@ import java.util.Random;
 import java.util.prefs.Preferences;
 
 public class PrimaryScreenController {
+    final Random rand = new Random();
     private ArrayList<Folder> folders;
     private ArrayList<Folder> disabledFolders;
     private ArrayList<Type> types;
@@ -112,18 +114,18 @@ public class PrimaryScreenController {
             String systemDisplayName = FileSystemView.getFileSystemView().getSystemDisplayName(drivePath.toFile());
 
             String[] separated = systemDisplayName.split(" ");
-            String driveName = "";
+            StringBuilder driveName = new StringBuilder();
             for (int i = 0; i < separated.length; i++) {
                 if (separated[i].equals("(" + drive + ":)")){
                 } else {
                     if (i == 0){
-                        driveName += separated[i];
+                        driveName.append(separated[i]);
                     } else {
-                        driveName += (" " + separated[i]);
+                        driveName.append(" ").append(separated[i]);
                     }
                 }
             }
-            Main.getInstance().setHardDriveName(driveName);
+            Main.getInstance().setHardDriveName(driveName.toString());
 
             String folderPath = newDirectory.getAbsolutePath().substring(2);
             Main.getInstance().setRootFolder(folderPath);
@@ -147,13 +149,13 @@ public class PrimaryScreenController {
             if (folder.getName().equals(folderName)){
                 disabledFolders.add(folder);
                 folders.remove(folder);
+                removeFolderFromMasonryPane(folderName);
                 break;
             }
         }
     }
 
     public void listFoldersOnScrollPane() {
-        final Random rng = new Random();
         //VBox content = new VBox(5);
         //ScrollPane scroller = folderScrollPane;
         JFXMasonryPane mPane = masonryPane;
@@ -171,9 +173,9 @@ public class PrimaryScreenController {
             });
             String style = String.format("-fx-background: rgb(%d, %d, %d);" +
                             "-fx-background-color: -fx-background;",
-                    rng.nextInt(128)+128,
-                    rng.nextInt(128)+128,
-                    rng.nextInt(128)+128);
+                    rand.nextInt(128)+128,
+                    rand.nextInt(128)+128,
+                    rand.nextInt(128)+128);
             anchorPane.setStyle(style);
             Label nameLabel = new Label("Name: " + folder.getName());
             Label typeLabel = new Label("Type: " + folder.getTypeName());
@@ -199,41 +201,55 @@ public class PrimaryScreenController {
         */
         ArrayList<Node> children = new ArrayList<>();
         for (Folder folder : folders) {
-            StackPane stackpane = new StackPane();
-            stackpane.setOnMouseClicked(e -> {
-                String folderName = ((Label)stackpane.getChildren().get(0)).getText().replace("Name: ","");
-                String path = currentUserPath + "/" + folderName;
-                try {
-                    File file = new File (path);
-                    Desktop desktop = Desktop.getDesktop();
-                    desktop.open(file);
-                } catch (Exception ex) {ex.printStackTrace();}
-            });
-            String style = String.format("-fx-background: rgb(%d, %d, %d);" +
-                            "-fx-background-color: -fx-background;",
-                    rng.nextInt(128)+128,
-                    rng.nextInt(128)+128,
-                    rng.nextInt(128)+128);
-            stackpane.setStyle(style);
-            Label nameLabel = new Label(folder.getName());
-            nameLabel.translateYProperty().setValue(-10);
-            Label typeLabel = new Label("Type: " + folder.getTypeName());
-            typeLabel.translateYProperty().setValue(10);
-            nameLabel.setFont(new Font("Roboto", 18));
-            nameLabel.setStyle("-fx-text-fill: white");
-            typeLabel.setFont(new Font("Roboto", 16));
-            typeLabel.setStyle("-fx-text-fill: white");
-
-            double nameWidth = TextUtils.computeTextWidth(nameLabel.getFont(), nameLabel.getText(), 0.0D) + 10;
-            double typeWidth = TextUtils.computeTextWidth(typeLabel.getFont(), typeLabel.getText(), 0.0D) + 10;
-            stackpane.setPrefWidth(Math.max(nameWidth, typeWidth));
-            stackpane.setPrefHeight(50);
-            JFXDepthManager.setDepth(stackpane, 1);
-            stackpane.getChildren().add(nameLabel);
-            stackpane.getChildren().add(typeLabel);
-            children.add(stackpane);
+            addFolderToScrollPane(folder);
         }
-        mPane.getChildren().addAll(children);
+    }
+
+    private void addFolderToScrollPane(Folder newFolder) {
+        StackPane stackpane = new StackPane();
+        stackpane.setOnMouseClicked(e -> {
+            String folderName = ((Label)stackpane.getChildren().get(0)).getText().replace("Name: ","");
+            String path = currentUserPath + "/" + folderName;
+            try {
+                File file = new File (path);
+                Desktop desktop = Desktop.getDesktop();
+                desktop.open(file);
+            } catch (Exception ex) {ex.printStackTrace();}
+        });
+        String style = String.format("-fx-background: rgb(%d, %d, %d);" +
+                        "-fx-background-color: -fx-background;",
+                rand.nextInt(128)+110,
+                rand.nextInt(128)+110,
+                rand.nextInt(128)+120);
+        stackpane.setStyle(style);
+        Label nameLabel = new Label(newFolder.getName());
+        nameLabel.translateYProperty().setValue(-10);
+        Label typeLabel = new Label("Type: " + newFolder.getTypeName());
+        typeLabel.translateYProperty().setValue(10);
+        nameLabel.setFont(new Font("Roboto", 18));
+        nameLabel.setStyle("-fx-text-fill: white");
+        typeLabel.setFont(new Font("Roboto", 16));
+        typeLabel.setStyle("-fx-text-fill: white");
+
+        double nameWidth = TextUtils.computeTextWidth(nameLabel.getFont(), nameLabel.getText(), 0.0D);
+        double typeWidth = TextUtils.computeTextWidth(typeLabel.getFont(), typeLabel.getText(), 0.0D);
+        stackpane.setMinWidth(Math.max(nameWidth, typeWidth) + 5 + rand.nextInt(10));
+        stackpane.setPrefHeight(50);
+        JFXDepthManager.setDepth(stackpane, 1);
+        stackpane.getChildren().add(nameLabel);
+        stackpane.getChildren().add(typeLabel);
+        stackpane.setId(newFolder.getName());
+        masonryPane.getChildren().add(stackpane);
+    }
+
+    private void removeFolderFromMasonryPane(String folderName) {
+        ObservableList<Node> children = masonryPane.getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            if (children.get(i).getId().equals(folderName)) {
+                masonryPane.getChildren().remove(i);
+                break;
+            }
+        }
     }
 
     public void loadPreferences() {
@@ -273,6 +289,7 @@ public class PrimaryScreenController {
         newFolder.setPath(path);
         newFile.mkdir();
         folders.add(newFolder);
+        addFolderToScrollPane(newFolder);
 
     }
 

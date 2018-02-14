@@ -67,8 +67,8 @@ public class DisableFolderController {
 
     private void moveToDisabledList(String folderName) {
         Main.getInstance().getPrimaryScreenController().moveFolderToDisabled(folderName);
-        listFoldersOnScrollPane();
-        Main.getInstance().getPrimaryScreenController().listFoldersOnScrollPane();
+        //listFoldersOnScrollPane();
+        //Main.getInstance().getPrimaryScreenController().listFoldersOnScrollPane();
     }
 
 

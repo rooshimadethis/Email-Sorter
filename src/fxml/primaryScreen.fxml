@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -73,8 +74,12 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin></HBox>
-            <JFXMasonryPane fx:id="masonryPane" prefHeight="382.0" prefWidth="600.0" />
-            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" VBox.vgrow="NEVER">
+            <ScrollPane hbarPolicy="NEVER" stylesheets="@../res/css/primaryScrollPane.css">
+               <content>
+                  <JFXMasonryPane fx:id="masonryPane" prefHeight="382.0" prefWidth="600.0" />
+               </content>
+            </ScrollPane>
+            <VBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0" VBox.vgrow="NEVER">
                <children>
                   <JFXButton fx:id="processEmailsButton" onAction="#processEmails" stylesheets="@../res/css/defaultButton.css" text="Process Emails" />
                   <JFXProgressBar fx:id="progressSpinner" prefHeight="0.0" prefWidth="598.0" stylesheets="@../res/css/progressbar.css" translateY="5.0">
