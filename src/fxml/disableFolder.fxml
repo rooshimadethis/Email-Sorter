@@ -6,16 +6,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisableFolderController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisableFolderController">
    <children>
       <VBox alignment="CENTER" layoutX="109.0" layoutY="53.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label contentDisplay="CENTER" text="Disable: (This will stop adding emails to this folder)" textAlignment="CENTER" VBox.vgrow="NEVER">
+            <Label contentDisplay="CENTER" stylesheets="@../res/css/light/subtitle.css" text="Disable Folders" textAlignment="CENTER" VBox.vgrow="NEVER">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
+            <Label contentDisplay="CENTER" stylesheets="@../res/css/light/label.css" text="This will stop adding emails to this folder" textAlignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" stylesheets="@../res/css/scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

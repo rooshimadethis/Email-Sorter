@@ -14,8 +14,8 @@
 }
 
 .jfx-combo-box {
-    -fx-prompt-text-fill: white;
-	-fx-text-fill: white;
+    -fx-prompt-text-fill: #8e98a2;
+	-fx-text-fill: #8e98a2;
 	-fx-font-family: "Roboto";
     -fx-font-size: 16.0;
 	
@@ -29,13 +29,7 @@
 	-fx-text-fill: white;
 }
 
-.jfx-combo-box .list-cell:selected .text {
-	-fx-fill: white;
-}
 
-.jfx-combo-box > .arrow-button > .arrow {
-	-fx-background-color: white;
-}
 
 .jfx-combo-box .jfx-rippler {
 	-jfx-rippler-fill: #fb8c00;

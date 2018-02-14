@@ -2,17 +2,17 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
-import com.jfoenix.controls.JFXBadge;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
-import com.jfoenix.controls.JFXScrollPane;
+import com.jfoenix.controls.*;
+import com.jfoenix.effects.JFXDepthManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -40,9 +40,14 @@ public class PrimaryScreenController {
     private boolean separateInOut;
     private User currentUser;
 
-    @FXML private ScrollPane folderScrollPane;
+    //@FXML private ScrollPane folderScrollPane;
+    @FXML private JFXMasonryPane masonryPane;
     @FXML private JFXProgressBar progressSpinner;
     @FXML private JFXButton processEmailsButton;
+    @FXML private ImageView addFolderImageView;
+    @FXML private ImageView disableFolderImageView;
+    @FXML private ImageView editFolderImageView;
+    @FXML private ImageView preferencesImageView;
 
     @FXML
     public void initialize() {
@@ -57,6 +62,11 @@ public class PrimaryScreenController {
         listFoldersOnScrollPane();
 
         loadPreferences();
+
+        JFXDepthManager.setDepth(addFolderImageView, 1);
+        JFXDepthManager.setDepth(disableFolderImageView, 1);
+        JFXDepthManager.setDepth(editFolderImageView, 1);
+        JFXDepthManager.setDepth(preferencesImageView, 1);
     }
 
     @FXML protected void processEmails() {
@@ -144,10 +154,11 @@ public class PrimaryScreenController {
 
     public void listFoldersOnScrollPane() {
         final Random rng = new Random();
-        VBox content = new VBox(5);
-        ScrollPane scroller = folderScrollPane;
+        //VBox content = new VBox(5);
+        //ScrollPane scroller = folderScrollPane;
+        JFXMasonryPane mPane = masonryPane;
 
-        for (Folder folder : folders) {
+        /*for (Folder folder : folders) {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setOnMouseClicked(e -> {
                 String folderName = ((Label)anchorPane.getChildren().get(0)).getText().replace("Name: ","");
@@ -166,8 +177,11 @@ public class PrimaryScreenController {
             anchorPane.setStyle(style);
             Label nameLabel = new Label("Name: " + folder.getName());
             Label typeLabel = new Label("Type: " + folder.getTypeName());
-            nameLabel.setFont(new Font("Roboto", 20));
-            typeLabel.setFont(new Font("Roboto", 20));
+            nameLabel.setFont(new Font("Roboto", 18));
+            nameLabel.setStyle("-fx-text-fill: white");
+            typeLabel.setFont(new Font("Roboto", 18));
+            typeLabel.setStyle("-fx-text-fill: white");
+
 
             AnchorPane.setLeftAnchor(nameLabel, 5.0);
             AnchorPane.setTopAnchor(nameLabel, 3.0);
@@ -175,19 +189,51 @@ public class PrimaryScreenController {
             AnchorPane.setRightAnchor(typeLabel, 5.0);
             AnchorPane.setTopAnchor(typeLabel, 3.0);
 
-            //ImageView trash = new ImageView("/res/images/trash.png");
-            //trash.setPreserveRatio(true);
-            //AnchorPane.setRightAnchor(trash, 5.0);
-            //AnchorPane.setTopAnchor(trash, 5.0);
-            //AnchorPane.setBottomAnchor(trash, 5.0);
-            anchorPane.setPrefWidth(590);
+            anchorPane.setPrefWidth(599);
             anchorPane.setPrefHeight(30);
             anchorPane.getChildren().add(nameLabel);
             anchorPane.getChildren().add(typeLabel);
-            //anchorPane.getChildren().add(trash);
             content.getChildren().add(anchorPane);
         }
         scroller.setContent(content);
+        */
+        ArrayList<Node> children = new ArrayList<>();
+        for (Folder folder : folders) {
+            StackPane stackpane = new StackPane();
+            stackpane.setOnMouseClicked(e -> {
+                String folderName = ((Label)stackpane.getChildren().get(0)).getText().replace("Name: ","");
+                String path = currentUserPath + "/" + folderName;
+                try {
+                    File file = new File (path);
+                    Desktop desktop = Desktop.getDesktop();
+                    desktop.open(file);
+                } catch (Exception ex) {ex.printStackTrace();}
+            });
+            String style = String.format("-fx-background: rgb(%d, %d, %d);" +
+                            "-fx-background-color: -fx-background;",
+                    rng.nextInt(128)+128,
+                    rng.nextInt(128)+128,
+                    rng.nextInt(128)+128);
+            stackpane.setStyle(style);
+            Label nameLabel = new Label(folder.getName());
+            nameLabel.translateYProperty().setValue(-10);
+            Label typeLabel = new Label("Type: " + folder.getTypeName());
+            typeLabel.translateYProperty().setValue(10);
+            nameLabel.setFont(new Font("Roboto", 18));
+            nameLabel.setStyle("-fx-text-fill: white");
+            typeLabel.setFont(new Font("Roboto", 16));
+            typeLabel.setStyle("-fx-text-fill: white");
+
+            double nameWidth = TextUtils.computeTextWidth(nameLabel.getFont(), nameLabel.getText(), 0.0D) + 10;
+            double typeWidth = TextUtils.computeTextWidth(typeLabel.getFont(), typeLabel.getText(), 0.0D) + 10;
+            stackpane.setPrefWidth(Math.max(nameWidth, typeWidth));
+            stackpane.setPrefHeight(50);
+            JFXDepthManager.setDepth(stackpane, 1);
+            stackpane.getChildren().add(nameLabel);
+            stackpane.getChildren().add(typeLabel);
+            children.add(stackpane);
+        }
+        mPane.getChildren().addAll(children);
     }
 
     public void loadPreferences() {
@@ -205,10 +251,6 @@ public class PrimaryScreenController {
 
     @FXML protected void goToEditFolder() {
         Main.getInstance().goToEditFolder();
-    }
-
-    @FXML protected void goToInitializePreferences() {
-        Main.getInstance().goToInitializePreferences();
     }
 
     @FXML protected void goToSetPreferences() {

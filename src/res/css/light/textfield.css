@@ -1,0 +1,10 @@
+.jfx-text-field {	
+    -fx-prompt-text-fill: #8e98a2;
+	-fx-text-fill: #6c7a89;
+	-fx-font-family: "Roboto";
+    -fx-font-size: 15.0;
+	
+	-jfx-unfocus-color: #8e98a2;
+	-jfx-focus-color: #6c7a89;
+	
+}

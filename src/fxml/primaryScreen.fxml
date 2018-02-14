@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,14 +15,14 @@
    <children>
       <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
          <children>
-            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="134.0" prefWidth="600.0" stylesheets="@../res/css/HboxPrimary.css">
+            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="121.0" prefWidth="600.0" stylesheets="@../res/css/HboxPrimary.css">
                <children>
-                  <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
                      <HBox.margin>
-                        <Insets top="2.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
-                        <ImageView fx:id="addFolderImageView" fitHeight="105.0" fitWidth="115.0" onMouseClicked="#goToAddNewFolder" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="addFolderImageView" fitHeight="80.0" fitWidth="105.0" onMouseClicked="#goToAddNewFolder" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../res/images/add.png" />
                            </image>
@@ -30,12 +30,12 @@
                         <Label stylesheets="@../res/css/smalllabel.css" text="Add Folder" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
                      <HBox.margin>
-                        <Insets top="2.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
-                        <ImageView fx:id="disableFolderImageView" fitHeight="102.0" fitWidth="131.0" onMouseClicked="#goToDisableFolder" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="disableFolderImageView" fitHeight="80.0" fitWidth="102.0" onMouseClicked="#goToDisableFolder" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../res/images/minus.png" />
                            </image>
@@ -43,12 +43,12 @@
                         <Label stylesheets="@../res/css/smalllabel.css" text="Remove Folder" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
                      <HBox.margin>
-                        <Insets top="2.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
-                        <ImageView fx:id="editFolderImageView" fitHeight="85.0" fitWidth="109.0" onMouseClicked="#goToEditFolder" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="editFolderImageView" fitHeight="80.0" fitWidth="109.0" onMouseClicked="#goToEditFolder" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../res/images/pencil-edit-button.png" />
                            </image>
@@ -56,25 +56,25 @@
                         <Label stylesheets="@../res/css/smalllabel.css" text="Edit Folder Type" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
                      <HBox.margin>
-                        <Insets top="2.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
-                        <ImageView fx:id="preferencesImageView" fitHeight="85.0" fitWidth="109.0" onMouseClicked="#goToSetPreferences" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="preferencesImageView" fitHeight="80.0" fitWidth="109.0" onMouseClicked="#goToSetPreferences" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../res/images/wrench.png" />
                            </image>
                         </ImageView>
-                        <Label stylesheets="@../res/css/smalllabel.css" text="Change Preferences" />
+                        <Label stylesheets="@../res/css/smalllabel.css" text="Change Prefs" />
                      </children>
                   </VBox>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin></HBox>
-            <ScrollPane fx:id="folderScrollPane" prefHeight="371.0" prefWidth="600.0" stylesheets="@../res/css/scrollpane.css" />
-            <VBox alignment="CENTER" prefHeight="106.0" prefWidth="600.0" VBox.vgrow="NEVER">
+            <JFXMasonryPane fx:id="masonryPane" prefHeight="382.0" prefWidth="600.0" />
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" VBox.vgrow="NEVER">
                <children>
                   <JFXButton fx:id="processEmailsButton" onAction="#processEmails" stylesheets="@../res/css/defaultButton.css" text="Process Emails" />
                   <JFXProgressBar fx:id="progressSpinner" prefHeight="0.0" prefWidth="598.0" stylesheets="@../res/css/progressbar.css" translateY="5.0">
