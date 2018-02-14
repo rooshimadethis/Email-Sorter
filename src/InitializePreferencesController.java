@@ -28,6 +28,8 @@ public class InitializePreferencesController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
+
         nextButton.setDisable(true);
 
         ObservableList<String> saveDelays =

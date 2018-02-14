@@ -53,6 +53,8 @@ public class StartupController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
+
         mainAuthorizer = new Authorizer();
         newAccountThreadRunning = false;
         users = new ArrayList<User>();

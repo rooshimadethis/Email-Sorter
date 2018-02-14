@@ -20,6 +20,7 @@ public class SetPreferencesController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
 
         ObservableList<String> saveDelays =
                 FXCollections.observableArrayList();

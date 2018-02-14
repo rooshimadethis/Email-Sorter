@@ -19,6 +19,8 @@ public class InitializeHardDriveController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
+
         nextButton.setDisable(true);
         directoryField.setPrefWidth(200);
         //directoryField.prefColumnCountProperty().bind(directoryField.textProperty().length());

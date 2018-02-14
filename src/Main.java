@@ -36,6 +36,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Font.loadFont(getClass().getResourceAsStream("/res/fonts/Roboto/Roboto-Medium"), 48);
+        System.setProperty("prism.lcdtext", "true");
 
         try {
             stage = primaryStage;
@@ -95,7 +96,7 @@ public class Main extends Application {
 
     public void goToPrimaryScreen() {
         try {
-            replaceSceneContent("/fxml/primaryScreen.fxml", 600, 500);
+            replaceSceneContent("/fxml/primaryScreen.fxml", 655, 500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -145,6 +146,7 @@ public class Main extends Application {
 
             modal.initOwner(modal.getOwner());
 
+            modal.centerOnScreen();
             modal.showAndWait();
 
         } catch (Exception e) {e.printStackTrace();}
@@ -181,6 +183,7 @@ public class Main extends Application {
             stage.setTitle("Gmail Sorter");
             stage.setScene(scene);
 
+            stage.centerOnScreen();
             stage.show();
 
             return page;

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisableFolderController">
+<AnchorPane prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisableFolderController">
    <children>
       <VBox alignment="CENTER" layoutX="109.0" layoutY="53.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" stylesheets="@../res/css/scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="270.0" prefWidth="490.0" stylesheets="@../res/css/scrollpane.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

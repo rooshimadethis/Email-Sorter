@@ -19,6 +19,8 @@ public class AddNewFolderController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
+
         keywordTextArea.setWrapText(true);
         /*nameTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override

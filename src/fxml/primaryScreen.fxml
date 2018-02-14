@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,13 +11,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@../res/css/BasicApplication_css/BasicApplication.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimaryScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="655.0" stylesheets="@../res/css/BasicApplication_css/BasicApplication.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimaryScreenController">
    <children>
       <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
          <children>
-            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="121.0" prefWidth="600.0" stylesheets="@../res/css/HboxPrimary.css">
+            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="121.0" prefWidth="600.0" spacing="3.0" stylesheets="@../res/css/HboxPrimary.css">
                <children>
-                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -28,10 +27,9 @@
                               <Image url="@../res/images/add.png" />
                            </image>
                         </ImageView>
-                        <Label stylesheets="@../res/css/smalllabel.css" text="Add Folder" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -41,10 +39,9 @@
                               <Image url="@../res/images/minus.png" />
                            </image>
                         </ImageView>
-                        <Label stylesheets="@../res/css/smalllabel.css" text="Remove Folder" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -54,10 +51,9 @@
                               <Image url="@../res/images/pencil-edit-button.png" />
                            </image>
                         </ImageView>
-                        <Label stylesheets="@../res/css/smalllabel.css" text="Edit Folder Type" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefWidth="120.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefWidth="120.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -67,7 +63,6 @@
                               <Image url="@../res/images/wrench.png" />
                            </image>
                         </ImageView>
-                        <Label stylesheets="@../res/css/smalllabel.css" text="Change Prefs" />
                      </children>
                   </VBox>
                </children>
@@ -76,13 +71,13 @@
                </VBox.margin></HBox>
             <ScrollPane hbarPolicy="NEVER" stylesheets="@../res/css/primaryScrollPane.css">
                <content>
-                  <JFXMasonryPane fx:id="masonryPane" prefHeight="382.0" prefWidth="600.0" />
+                  <JFXMasonryPane fx:id="masonryPane" prefHeight="382.0" prefWidth="682.0" />
                </content>
             </ScrollPane>
             <VBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0" VBox.vgrow="NEVER">
                <children>
                   <JFXButton fx:id="processEmailsButton" onAction="#processEmails" stylesheets="@../res/css/defaultButton.css" text="Process Emails" />
-                  <JFXProgressBar fx:id="progressSpinner" prefHeight="0.0" prefWidth="598.0" stylesheets="@../res/css/progressbar.css" translateY="5.0">
+                  <JFXProgressBar fx:id="progressSpinner" prefHeight="7.0" prefWidth="655.0" stylesheets="@../res/css/progressbar.css" translateY="5.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

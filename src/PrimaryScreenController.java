@@ -53,6 +53,13 @@ public class PrimaryScreenController {
 
     @FXML
     public void initialize() {
+        System.setProperty("prism.lcdtext", "true");
+
+        addFolderImageView.smoothProperty().setValue(true);
+        disableFolderImageView.smoothProperty().setValue(true);
+        editFolderImageView.smoothProperty().setValue(true);
+        preferencesImageView.smoothProperty().setValue(true);
+
         currentUser = Main.getInstance().getCurrentUser();
         progressSpinner.setVisible(false);
         types = DataStore.loadTypes(currentUser);
@@ -65,10 +72,10 @@ public class PrimaryScreenController {
 
         loadPreferences();
 
-        JFXDepthManager.setDepth(addFolderImageView, 1);
-        JFXDepthManager.setDepth(disableFolderImageView, 1);
-        JFXDepthManager.setDepth(editFolderImageView, 1);
-        JFXDepthManager.setDepth(preferencesImageView, 1);
+        JFXDepthManager.setDepth(addFolderImageView, 3);
+        JFXDepthManager.setDepth(disableFolderImageView, 3);
+        JFXDepthManager.setDepth(editFolderImageView, 3);
+        JFXDepthManager.setDepth(preferencesImageView, 3);
     }
 
     @FXML protected void processEmails() {
@@ -218,12 +225,13 @@ public class PrimaryScreenController {
         });
         String style = String.format("-fx-background: rgb(%d, %d, %d);" +
                         "-fx-background-color: -fx-background;",
-                rand.nextInt(128)+110,
-                rand.nextInt(128)+110,
-                rand.nextInt(128)+120);
+                rand.nextInt(140)+110,
+                rand.nextInt(140)+110,
+                rand.nextInt(140)+115);
         stackpane.setStyle(style);
         Label nameLabel = new Label(newFolder.getName());
         nameLabel.translateYProperty().setValue(-10);
+        JFXDepthManager.setDepth(nameLabel, 1);
         Label typeLabel = new Label("Type: " + newFolder.getTypeName());
         typeLabel.translateYProperty().setValue(10);
         nameLabel.setFont(new Font("Roboto", 18));
