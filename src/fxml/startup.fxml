@@ -2,11 +2,13 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="anchorPane" prefHeight="300.0" prefWidth="500.0" stylesheets="@../res/css/BasicApplication_css/BasicApplication.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartupController">
+
+<AnchorPane fx:id="anchorPane" prefHeight="300.0" prefWidth="500.0" stylesheets="@../res/css/BasicApplication_css/BasicApplication.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartupController">
    <children>
       <VBox alignment="CENTER" layoutX="69.0" layoutY="-13.0" stylesheets="@../res/css/BasicApplication_css/BasicApplication.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +20,7 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <JFXComboBox fx:id="accountDropdown" focusColor="#4f6174" promptText="Choose an account" stylesheets="@../res/css/combobox.css" />
+            <JFXComboBox fx:id="accountDropdown" focusColor="#4f6174" promptText="Choose an account" stylesheets="@../res/css/Combobox.css" />
             <JFXButton onAction="#makeNewAccount" stylesheets="@../res/css/button.css" text="Add new Gmail Account" translateY="5.0">
                <VBox.margin>
                   <Insets top="20.0" />
