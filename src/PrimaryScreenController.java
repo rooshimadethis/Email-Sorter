@@ -68,6 +68,9 @@ public class PrimaryScreenController {
         JFXDepthManager.setDepth(preferencesImageView, 3);
     }
 
+    /**
+     * This method starts the flow of saving and/or deleting the emails from Gmail
+     */
     @FXML protected void processEmails() {
         progressSpinner.setVisible(true);
 
@@ -80,6 +83,11 @@ public class PrimaryScreenController {
 
     }
 
+    /**
+     * I'm particularly proud about this feature. Since external hard drives can change drive letter, the program
+     *  saves information about the Hard Drive itself, including the name so that if the drive letter changes, the emails
+     *  folder can be found anyways
+     */
     private void getHardDriveData() {
         User currentUser = Main.getInstance().getCurrentUser();
         String loadedHardDriveName = Main.getInstance().getHardDriveName();

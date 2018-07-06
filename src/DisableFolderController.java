@@ -23,6 +23,9 @@ public class DisableFolderController {
 
     }
 
+    /**
+     * This method lists all of the available folders on the ScrollPane and creates a clickListener to delete if needed
+     */
     private void listFoldersOnScrollPane() {
         final Random rng = new Random();
         VBox content = new VBox(5);
@@ -75,6 +78,10 @@ public class DisableFolderController {
         scroller.setContent(content);
     }
 
+    /**
+     * If the folder is clicked then it's moved to the disabled list
+     * @param folderName
+     */
     private void moveToDisabledList(String folderName) {
         Main.getInstance().getPrimaryScreenController().moveFolderToDisabled(folderName);
         listFoldersOnScrollPane();

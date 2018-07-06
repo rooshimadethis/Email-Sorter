@@ -56,6 +56,9 @@ public class InitializePreferencesController {
         });
     }
 
+    /**
+     * The preferences are saved to the Windows Registry
+     */
     @FXML protected void savePreferences() {
         Preferences preferences = DataStore.getPreferencesForCurrentUser();
         preferences.putBoolean(DataStore.getDeleteKey(), deleteCheckBox.isSelected());

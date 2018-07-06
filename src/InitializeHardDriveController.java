@@ -36,6 +36,9 @@ public class InitializeHardDriveController {
         });
     }
 
+    /**
+     * This created a DirectoryChooser to choose the root folder for the Emails and will save the Hard drive it's used on
+     */
     @FXML
     protected void chooseRootFolder() {
 

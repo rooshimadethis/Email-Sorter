@@ -46,6 +46,9 @@ public class Folder implements Serializable{
         subfolders.add(newSubfolder);
     }
 
+    /**
+     * Each folder has a Received and Sent folder inside of it if the option is chosen
+     */
     private void createInOut(){
         File in = new File(path + "/Received");
         File out = new File(path + "/Sent");

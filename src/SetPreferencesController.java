@@ -9,6 +9,10 @@ import java.util.prefs.Preferences;
 
 public class SetPreferencesController {
 
+    /**
+     * The Preferences are saved to the Windows registry using key value pairs and can be updates as needed
+     */
+
     @FXML private CheckBox deleteCheckBox;
     @FXML private CheckBox readCheckBox;
     @FXML private CheckBox receivedCheckBox;

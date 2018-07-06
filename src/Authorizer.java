@@ -18,6 +18,10 @@ import java.util.List;
 
 public class Authorizer {
 
+    /**
+     * This Class has the methods and the Objects needed to go through Google authorization (Oauth2) to get the emails from Gmail.
+     */
+
     private static final String APPLICATION_NAME = "EmailSorter";
     private static final String DATA_STORE_DIR = System.getProperty("user.dir") + "\\credentials\\StoredCredential";
     private static final String CLIENT_SECRET_DIR = "/credentials/client_id.json";
@@ -43,6 +47,11 @@ public class Authorizer {
         } catch (Exception e){e.printStackTrace();}
     }
 
+    /**
+     * Given a unique userID, the GoogleAuthorizationCodeFlow creates long term refreshable tokens to allow future authorizations
+     * @param userID a unique user id that will have a Gmail Auth assigned to it and the email
+     * @return
+     */
     public Credential authorizeUser(String userID){
         Credential credential = null;
         try {

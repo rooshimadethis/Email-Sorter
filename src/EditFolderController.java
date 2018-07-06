@@ -24,6 +24,8 @@ public class EditFolderController {
     public void initialize() {
         System.setProperty("prism.lcdtext", "true");
 
+
+        //If anything is changed ie. something is added or removed it will relist the folders on the scrollpane
         folderDropdown.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -39,6 +41,9 @@ public class EditFolderController {
 
     }
 
+    /**
+     * This method adds all of the available folders to the dropdown combobox
+     */
     private void fillUpComboBox() {
         retrievedFolders = Main.getInstance().getPrimaryScreenController().getFolders();
         ObservableList<String> folderNameList =
@@ -49,6 +54,12 @@ public class EditFolderController {
         folderDropdown.setItems(folderNameList);
     }
 
+    /**
+     * Since I am adding the folders programmatically to the drop down using anchorpanes I can add clickListeners but
+     *  since the tabs don't have the folder info, I have to take the name of the tab and then search for the info
+     *  afterwards with this method
+     * @return The folder that corresponds to the tab clicked based on the tab text
+     */
     private Folder getChosenFolderFromDropdown() {
         retrievedFolders = Main.getInstance().getPrimaryScreenController().getFolders();
         for (Folder folder : retrievedFolders){

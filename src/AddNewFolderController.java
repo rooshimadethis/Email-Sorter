@@ -17,26 +17,18 @@ public class AddNewFolderController {
     @FXML private TextField nameTextField;
     private String oldArea;
 
+    /**
+     * Initialize mainly sets the combobox to contain the available types and sets the listener for the combobox
+     */
     @FXML
     public void initialize() {
+		
+		//for text antialiasing
         System.setProperty("prism.lcdtext", "true");
 
         keywordTextArea.setWrapText(true);
-        /*nameTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String newArea = keywordTextArea.getText().replace(oldArea + ", ", "");
-                String[] texts = {nameTextField.getText(), newArea};
-                if (texts[0].length() > 0) {
-                    keywordTextArea.setText(texts[0] + ", " + texts[1]);
-                } else {
-                    keywordTextArea.setText(texts[1]);
-                }
-                oldArea = nameTextField.getText();
-            }
-        });
-        */
 
+		//this chunk of code adds a listener for the dropdown to add the premade Types into the textArea
         typesComboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -58,7 +50,7 @@ public class AddNewFolderController {
         });
 
 
-
+		//populate dropdown with the available types
         ObservableList<String> typesList =
                 FXCollections.observableArrayList();
         ArrayList<Type> typesArrayList = Main.getInstance().getPrimaryScreenController().getTypes();
@@ -89,6 +81,7 @@ public class AddNewFolderController {
         }
     }
     //TODO set warning/cancel
+        //closes the open windows after a folder is created
         Main.getInstance().closeModalWindow();
 
 

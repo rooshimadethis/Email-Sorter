@@ -31,7 +31,9 @@ public class GmailHandler {
         createBaseQuery();
     }
 
-    //creates the query based on preferences to later send request
+    /**
+     * This method creates a base query depending on the preferences selected including read/unread, received/sent etc.
+     */
     private void createBaseQuery() {
         String query = "";
 
@@ -73,7 +75,17 @@ public class GmailHandler {
 
     }
 
+    /**
+     * This is the main processing method for the email downloading and saving process
+     * 1. It get credentials for the User and creates a Gmail object
+     * 2. For each of the folders that need processing:
+     *  a. It builds the full query for each of the folder in a loop
+     *  b. It gets a list of message responses
+     *  c. It loops through all of the given messages and sends them to the saveMessages() method
+     */
     public void processEmailsForCurrentFolders() {
+
+        //This chunk authorizes and gets Credentials based on the User/Email
         Authorizer authorizer = new Authorizer();
         String userId = Main.getInstance().getCurrentUser().getUserID();
         Credential credential = authorizer.authorizeUser(userId);
@@ -86,7 +98,7 @@ public class GmailHandler {
                 String folderQuery = baseQuery + "subject:" + "(" + folder.getName() + ") ";
                 System.out.println("Query: " + folderQuery);
                 ListMessagesResponse messagesResponse = gmailService.users().messages().list(me).setQ(folderQuery).setMaxResults((long)10000).execute();
-                List<Message> receivedMessages = new ArrayList<>();
+                List<Message> receivedMessages = new ArrayList<Message>();
                 while (messagesResponse.getMessages() != null) {
                     receivedMessages.addAll(messagesResponse.getMessages());
                     saveMessages(new ArrayList<Message>(receivedMessages), folder);
@@ -102,6 +114,11 @@ public class GmailHandler {
         }
     }
 
+    /**
+     * This method takes an Arraylist of Gmail messages and downloads them into real files
+     * @param messages
+     * @param currentFolder
+     */
     private void saveMessages(ArrayList<Message> messages, Folder currentFolder) {
         //ArrayList<String> emailsToDelete = new ArrayList<>();
         long totalStart = System.currentTimeMillis();
@@ -111,19 +128,23 @@ public class GmailHandler {
                 String path = "";
                 StringBuilder mailName = new StringBuilder();
 
+                //The message is saved by taking the raw Email from Gmail and saving the bytes into an .eml format
                 Message rawMessage = gmailService.users().messages().get("me", message.getId()).setFormat("raw").execute();
                 byte[] emailBytes = rawMessage.decodeRaw();
                 Properties props = new Properties();
                 Session session = Session.getDefaultInstance(props, null);
                 MimeMessage email = new MimeMessage(session, new ByteArrayInputStream(emailBytes));
 
+                //The time is the first thing in the file name for best sorting
                 String messageTime = getMessageTimeAsString(email);
                 mailName.append(messageTime);
                 mailName.append(" ");
 
+                //The name of the folder is then added for general knowledge
                 mailName.append(currentFolder.getName());
                 mailName.append(" ");
 
+                //Either the recipient is saved if it is a sent email or the sender if it is received
                 String userEmail = Main.getInstance().getCurrentUser().getEmailAddress();
                 Boolean sent = false;
                 String from = getMessageFrom(email).replace("<", "").replace(">", "").replace("\"", "");
@@ -149,10 +170,12 @@ public class GmailHandler {
                 }
                 mailName.append(" ");
 
-
+                //A Gmail snippet of the email is added to the end of the file name so opening the email is not required
+                //  in some cases when trying to find the right email
                 String snippet = rawMessage.getSnippet();
                 mailName.append(snippet);
 
+                //This chunk looks for a subfolder of the Type so that it can be saved in the right area
                 Boolean subfolderFound = false;
                 for (Subfolder subfolder : currentFolder.getSubfolders()) {
                     if (getMessageSubject(email).contains(subfolder.getName())) {
@@ -171,6 +194,8 @@ public class GmailHandler {
                         }
                     }
                 }
+
+                //This chunk will either put it in the received or sent folder depending on if the option is checked
                 if (!subfolderFound){
                     if (currentFolder.isSeparateInOut()){
                         if (sent) {
@@ -185,6 +210,7 @@ public class GmailHandler {
                 if (!path.equals("")) {
                     String fileName = mailName.toString();
 
+                    //The email file name is cleaned up for reading/Windows purposes
                     fileName = HtmlEscape.unescapeHtml(fileName);
                     fileName = fileName.replace("\\", "");
                     fileName = fileName.replaceAll("[\"/:*?<>|\n\r\t]", "");
@@ -192,16 +218,21 @@ public class GmailHandler {
 
                     String savePath = path + "/" + fileName;
 
+                    //The name is trimmed for windows length purposes
                     if (savePath.length() > 249){
                         int pathSize = path.length() + 1;
                         String mailString = fileName;
                         mailString = mailString.substring(0, 249-pathSize);
                         savePath = path + "/" + mailString;
                     }
+
+                    //The email is finally written to the Hard disk
                     FileOutputStream fout = new FileOutputStream(new File(savePath + ".eml"));
                     email.writeTo(fout);
                     fout.close();
                     numEmails++;
+
+                    //If the email is to be deleted in Gmail, it is
                     if (deletePreference) {
                         try {
                             gmailService.users().messages().trash("me", message.getId()).execute();
